@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "Continuous Architecture Assurance (CAA): Calibrating AI Reviewers as Instruments, Not Oracles"
+type: software
+authors:
+  - family-names: Carvalho
+    given-names: Rudson
+abstract: >-
+  An assurance layer for technical decisions that reframes AI-assisted
+  architecture review as a metrology problem. AI reviewers are treated as
+  instruments that emit measurements under a fixed verdict contract, gated by
+  objective rules with mandatory traceability, and continuously calibrated
+  against a corpus of real incidents using a paired recall / false-positive
+  metric. Includes a reference specification (verdict contract) and a
+  pre-registered falsification experiment.
+keywords:
+  - assurance case
+  - software reliability
+  - AI governance
+  - calibration
+  - metrology
+  - LLM reviewers
+  - architecture governance
+version: "0.1.0"
+date-released: "2026-06-26"
+license: Apache-2.0

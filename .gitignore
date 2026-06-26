@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Experiment artifacts (commit deliberately, not by accident)
+experiments/results/
+experiments/corpus/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
