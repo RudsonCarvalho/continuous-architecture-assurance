@@ -1,0 +1,37 @@
+{
+  "R1_naive": {
+    "recall": 1.0,
+    "fp_rate": 0.55,
+    "flagged_rate": 1.0,
+    "plausible_misattribution_rate": 0.925,
+    "youden": 0.45
+  },
+  "R2_contract": {
+    "recall": 1.0,
+    "fp_rate": 0.1,
+    "flagged_rate": 0.95,
+    "plausible_misattribution_rate": 0.775,
+    "youden": 0.9
+  },
+  "R3_narrow": {
+    "recall": 0.3,
+    "fp_rate": 0.05,
+    "flagged_rate": 0.425,
+    "plausible_misattribution_rate": 0.15,
+    "youden": 0.25
+  },
+  "R4_over_flagger": {
+    "recall": 1.0,
+    "fp_rate": 1.0,
+    "flagged_rate": 1.0,
+    "plausible_misattribution_rate": 1.0,
+    "youden": 0.0
+  },
+  "R5_misattribution": {
+    "recall": 0.0,
+    "fp_rate": 0.0,
+    "flagged_rate": 1.0,
+    "plausible_misattribution_rate": 0.35,
+    "youden": 0.0
+  }
+}

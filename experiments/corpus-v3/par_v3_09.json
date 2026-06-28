@@ -1,0 +1,10 @@
+{
+  "pair_id": "V3-09",
+  "ground_truth": "T06",
+  "secondary": null,
+  "distractor_category": "T12",
+  "status": "draft-needs-human-review",
+  "source": "Foursquare/MongoDB sharding outage summaries via public postmortem lists, https://github.com/danluu/post-mortems",
+  "case_fail": "O servico Leme armazena check-ins por cliente usando uma chave composta por tenant e dia. A maioria dos tenants gera pouco trafego, mas um cliente grande publica campanhas nacionais que concentram quase todas as escritas no mesmo tenant durante algumas horas. O cluster mostra uso medio baixo e ha espaco livre nos demais shards. A chave de particao nao inclui bucket de dispersao dentro do tenant; para o cliente maior, todos os eventos do dia seguem para a mesma faixa logica. Durante a campanha, um shard apresenta latencia de escrita varias vezes maior que os demais, enquanto outros permanecem ociosos. As leituras globais passam a esperar esse caminho especifico.",
+  "case_healthy": "O servico Leme armazena check-ins por cliente usando chave composta por tenant, bucket de hash e dia. Tenants pequenos usam poucos buckets, mas tenants grandes recebem dispersao configurada automaticamente quando suas escritas passam um limiar. Consultas de leitura agregam buckets em paralelo e as metricas mostram calor por shard e por tenant. Durante uma campanha nacional, o trafego do cliente grande se espalha por varios shards e o limite passa a ser a capacidade agregada do cluster. Ainda pode ser necessario aumentar recursos se a campanha for enorme, mas uma unica chave quente nao consegue concentrar quase todas as escritas em um shard."
+}

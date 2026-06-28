@@ -1,0 +1,10 @@
+{
+  "pair_id": "V3-04",
+  "ground_truth": "T02",
+  "secondary": null,
+  "distractor_category": "T11",
+  "status": "draft-needs-human-review",
+  "source": "GitHub DNS outage postmortem, https://github.blog/news-insights/the-library/dns-outage-post-mortem/",
+  "case_fail": "O cluster Boreal publica zonas de nomes a partir de um inventario interno. O processo de reconstrucao da zona consulta o proprio nome logico do inventario para descobrir endpoints atuais. Durante uma mudanca de endereco, um worker de provisionamento reinicia o componente autoritativo, mas nao reinicia o cache local. Quando a zona fica inconsistente, clientes fazem novas consultas enquanto o worker tenta reconstruir a zona. Cada etapa usa a janela padrao longa da biblioteca, inclusive descoberta do inventario, leitura da zona e confirmacao de publicacao. Um erro de resolucao em qualquer etapa mantem o processo preso ate a janela completa terminar; a fila de publicacao passa a conter muitas operacoes aguardando esses prazos. O cache local poderia reduzir algumas leituras repetidas, mas ele nao define o tempo maximo que cada etapa ocupa o worker.",
+  "case_healthy": "O cluster Boreal publica zonas de nomes a partir de um inventario interno. O processo de reconstrucao usa endereco bootstrap fora da zona que esta sendo publicada e cada consulta ao inventario tem timeout curto, retry limitado e resposta cacheada de ultimo estado valido. A mudanca de endereco reinicia explicitamente os componentes autoritativo e cache local como uma unica unidade operacional. Se a zona ficar inconsistente, clientes recebem falha rapida e o worker aborta antes de ocupar a fila com processos pendentes. Ainda existe dependencia do inventario, mas o caminho nao permite que consultas lentas se acumulem sem limite ate travar a publicacao."
+}

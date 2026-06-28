@@ -41,7 +41,7 @@
   "$defs": {
     "finding": {
       "type": "object",
-      "required": ["category", "severity", "evidence", "finding", "metric_that_proves_fix"],
+      "required": ["category", "severity", "evidence", "evidence_quote", "finding", "metric_that_proves_fix", "reassess_when"],
       "additionalProperties": false,
       "properties": {
         "category": {
@@ -59,6 +59,11 @@
           "description": "Origin identifiers (EX-ID) or incident IDs that ground this finding. An empty list violates the 'no scenario without an origin' rule and is rejected as SCENARIO_WITHOUT_ORIGIN at Gate G1.",
           "items": { "type": "string", "examples": ["EX-014", "INC-2025-091"] }
         },
+        "evidence_quote": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The literal excerpt from the reviewed artifact that supports this finding — the human-readable counterpart to the structured 'evidence' IDs. Separating the two keeps both machine-traceability (IDs) and auditability (the actual text). NOTE: the calibration harness in experiments/ used a single 'evidence' string for this excerpt; this schema is the normative target contract and splits the two fields, which production implementations should follow."
+        },
         "finding": {
           "type": "string",
           "description": "One-sentence statement of the risk."
@@ -74,7 +79,8 @@
         },
         "reassess_when": {
           "type": "string",
-          "description": "Condition under which this decision must be revisited. Trips automatically from runtime telemetry (Layer 3 -> ADR feedback loop).",
+          "minLength": 1,
+          "description": "Condition under which this decision must be revisited. Trips automatically from runtime telemetry (Layer 3 -> ADR feedback loop). Required because a finding with no reassessment condition is not a falsifiable decision — it is a permanent assertion, which the framework does not admit.",
           "examples": ["throughput > 500 tps", "external provider change"]
         }
       }

@@ -1,0 +1,10 @@
+{
+  "pair_id": "V3-02",
+  "ground_truth": "T04",
+  "secondary": null,
+  "distractor_category": "T10",
+  "status": "draft-needs-human-review",
+  "source": "CircleCI incompatible schema incident, https://discuss.circleci.com/t/incident-report-november-8-2021-jobs-stuck-in-a-not-running-state/41890",
+  "case_fail": "O servico Nimbo distribui tarefas de processamento lendo uma tabela compartilhada por produtores e consumidores. Uma alteracao adiciona novo formato ao campo de roteamento: produtores novos gravam o valor serializado como objeto, enquanto consumidores antigos ainda esperam texto. O deploy e descrito como reversivel e a equipe confia que voltar a versao anterior restaura o fluxo. Durante a janela de versoes mistas, linhas novas permanecem gravadas no formato de objeto mesmo depois de uma reversao do binario. O scanner percorre a tabela em ordem e interrompe o lote quando encontra um campo que nao consegue decodificar. O painel mostra tarefas paradas, filas crescendo e uma mistura de registros antigos e novos na mesma tabela.",
+  "case_healthy": "O servico Nimbo distribui tarefas de processamento lendo uma tabela compartilhada por produtores e consumidores. A alteracao do campo de roteamento e feita em duas fases: primeiro todos os consumidores passam a aceitar texto e objeto, depois produtores comecam a gravar o objeto, e por ultimo um job converte registros antigos. Durante a janela de transicao, o scanner ignora apenas registros comprovadamente corrompidos e publica uma metrica de formatos mistos. O rollback volta o produtor, mas nao quebra consumidores porque eles continuam lendo os dois formatos ate a migracao terminar. O deploy ainda pode falhar por outras razoes, mas a arquitetura remove a coexistencia incompatível que bloquearia toda a distribuicao."
+}

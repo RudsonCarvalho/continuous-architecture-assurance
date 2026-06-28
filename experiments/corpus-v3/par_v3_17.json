@@ -1,0 +1,10 @@
+{
+  "pair_id": "V3-17",
+  "ground_truth": "T06",
+  "secondary": null,
+  "distractor_category": "T09",
+  "status": "draft-needs-human-review",
+  "source": "GitHub ProxySQL/mysql1 load incidents via danluu/post-mortems, https://github.com/danluu/post-mortems",
+  "case_fail": "O portal Nascente usa um proxy SQL para rotear consultas entre replicas. Um relatorio analitico raro deveria ir para replicas frias, mas uma regra de roteamento o envia ao primario quando o filtro inclui uma organizacao muito grande. O proxy possui conexoes suficientes para trafego comum, e a falha se manifesta como conexoes presas e limite de arquivos atingido. Nas metricas por destino, quase todo o crescimento vem de consultas associadas a uma unica organizacao. Outras organizacoes continuam distribuídas entre replicas, enquanto esse filtro especifico concentra consultas pesadas no mesmo primario. O proxy e servicos que compartilham esse destino passam a esperar o mesmo caminho lento.",
+  "case_healthy": "O portal Nascente usa um proxy SQL para rotear consultas entre replicas. Relatorios analiticos sao particionados por organizacao e tamanho estimado; organizacoes grandes vao para replicas dedicadas ou jobs assíncronos, e a regra de roteamento nao permite que filtro pesado caia no primario. O proxy mede calor por organizacao e por destino, nao apenas conexoes totais. Conexoes ainda podem se esgotar se varios destinos falharem ao mesmo tempo, mas uma unica chave logica de cliente grande nao concentra consulta pesada no primario compartilhado nem aquece o mesmo caminho de roteamento."
+}

@@ -1,0 +1,10 @@
+{
+  "pair_id": "V3-14",
+  "ground_truth": "T08",
+  "secondary": null,
+  "distractor_category": "T05",
+  "status": "draft-needs-human-review",
+  "source": "Allegro asynchronous task-processing outage entry via danluu/post-mortems, https://github.com/danluu/post-mortems",
+  "case_fail": "O subsistema Riacho processa tarefas assincronas para carrinho, edicao em massa e newsletters. Um worker consome mensagens de uma fila compartilhada e chama varios adaptadores. Quando um adaptador retorna erro de validacao inesperado, o worker descarta a mensagem depois de registrar log local para nao bloquear a fila. Em pico, clientes reenviam operacoes que nao aparecem na UI, criando repeticoes visiveis nos endpoints de entrada. As mensagens descartadas nao sao movidas para uma fila de quarentena com payload e erro; o unico rastro fica em logs locais com retencao curta. Nao ha ferramenta de replay por tipo de tarefa depois que o adaptador e corrigido.",
+  "case_healthy": "O subsistema Riacho processa tarefas assincronas para carrinho, edicao em massa e newsletters. Um worker consome mensagens de uma fila compartilhada e chama varios adaptadores. Quando um adaptador retorna erro de validacao inesperado, a mensagem e movida para uma DLQ particionada por tipo de tarefa com payload, erro e versao do handler. Operadores podem replayar lotes apos corrigir o adaptador, e clientes recebem estado pendente em vez de reenviar cegamente. Ainda pode haver aumento de retries no cliente, mas a fila principal nao descarta trabalho sem trilha nem perde mensagens que precisam de recuperacao."
+}

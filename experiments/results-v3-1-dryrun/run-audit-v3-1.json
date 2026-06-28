@@ -1,0 +1,9 @@
+{
+  "scores_match": true,
+  "errors": {
+    "parse_errors": 0,
+    "schema_errors": 0,
+    "judge_errors": 0,
+    "call_errors": 0
+  }
+}

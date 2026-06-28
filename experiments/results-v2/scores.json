@@ -1,0 +1,22 @@
+{
+  "R1_naive": {
+    "recall": 1.0,
+    "fp_rate": 0.25,
+    "youden": 0.75
+  },
+  "R2_contract": {
+    "recall": 1.0,
+    "fp_rate": 0.05,
+    "youden": 0.95
+  },
+  "R3_narrow": {
+    "recall": 0.35,
+    "fp_rate": 0.0,
+    "youden": 0.35
+  },
+  "R4_over_flagger": {
+    "recall": 1.0,
+    "fp_rate": 1.0,
+    "youden": 0.0
+  }
+}

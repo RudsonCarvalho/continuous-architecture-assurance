@@ -1,0 +1,10 @@
+{
+  "pair_id": "V3-19",
+  "ground_truth": "T09",
+  "secondary": null,
+  "distractor_category": "T12",
+  "status": "draft-needs-human-review",
+  "source": "Val Town Sep 2024 outage postmortem, https://blog.val.town/blog/first-postmortem/",
+  "case_fail": "O painel Buriti recebe pequenas submissões interativas e grava auditoria, preferencia e estado de UI dentro de uma transacao unica. Cada submissao e rapida isoladamente, mas o handler abre a transacao antes de chamar validadores que fazem leituras auxiliares e disparam hooks internos. Sob pico de interacoes, a CPU do banco fica moderada e o numero total de requisicoes permanece perto da capacidade historica. Os traces mostram tempos longos entre o inicio da transacao e o primeiro comando de escrita, embora cada comando SQL individual continue curto. No mesmo intervalo, novas submissões ficam aguardando permissao para entrar no caminho de banco, e os dashboards agregados nao separam tempo de validacao, tempo de hooks e tempo efetivo de escrita.",
+  "case_healthy": "O painel Buriti recebe pequenas submissões interativas e grava auditoria, preferencia e estado de UI. O handler executa validadores fora da transacao, abre conexao apenas para o bloco minimo de escrita e publica hooks internos apos commit. O pool tem metricas por operacao mostrando tempo segurando conexao, e cada rota possui limite de concorrencia antes de entrar no banco. Sob pico de interacoes, requisicoes excedentes ficam em fila curta ou recebem erro rapido. A capacidade agregada ainda importa, mas a arquitetura impede que varias transacoes pequenas segurem conexoes enquanto fazem trabalho periferico."
+}

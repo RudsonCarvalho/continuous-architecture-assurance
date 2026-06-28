@@ -1,0 +1,10 @@
+{
+  "pair_id": "V3-11",
+  "ground_truth": "T01",
+  "secondary": null,
+  "distractor_category": "T04",
+  "status": "draft-needs-human-review",
+  "source": "Twilio Billing Incident Post-Mortem, https://www.twilio.com/en-us/blog/company/communications/billing-incident-post-mortem-breakdown-analysis-and-root-cause-html",
+  "case_fail": "O sistema Pontal registra movimentos de saldo para contas pre-pagas. Cada uso que encontra saldo abaixo do limite envia uma solicitacao de recarga ao processador de cartao e, ao receber confirmacao, publica um evento de recarga para o ledger interno. O evento carrega o identificador da tentativa original, mas o handler monta a linha financeira a partir de conta, valor, moeda e horario arredondado. Durante uma janela em que o saldo lido pelo servico fica atrasado em relacao as confirmacoes do processador, chamadas de uso consecutivas reenfileiram o mesmo evento com novos envelopes de transporte. Cada envelope passa pela transacao local de insercao do movimento e atualizacao de saldo. A tabela aceita mais de uma linha para a mesma tentativa original, entao confirmacoes da mesma recarga podem virar movimentos separados antes que o saldo atualizado fique visivel para as proximas leituras.",
+  "case_healthy": "O sistema Pontal registra movimentos de saldo para contas pre-pagas. Cada uso que encontra saldo abaixo do limite envia uma solicitacao de recarga ao processador de cartao e, ao receber confirmacao, publica um evento de recarga para o ledger interno. O evento carrega o identificador da tentativa original, e o handler persiste esse identificador primeiro em uma tabela de idempotencia com chave composta por conta e tentativa. Durante uma janela em que o saldo lido pelo servico fica atrasado em relacao as confirmacoes do processador, chamadas de uso consecutivas podem reenfileirar o mesmo evento com novos envelopes de transporte. A criacao do movimento e a marcacao da chave processada ocorrem na mesma transacao. Se outro envelope da mesma recarga chega antes de o saldo atualizado ficar visivel, o handler encontra a chave ja processada e retorna o resultado anterior, sem criar outro movimento."
+}

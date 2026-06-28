@@ -1,0 +1,10 @@
+{
+  "pair_id": "V3-16",
+  "ground_truth": "T02",
+  "secondary": null,
+  "distractor_category": "T07",
+  "status": "draft-needs-human-review",
+  "source": "Mozilla Firefox Proxy Failover incident, https://hacks.mozilla.org/2022/01/heads-up-fx-96-tab-crash-on-linux/",
+  "case_fail": "O cliente Ipe possui uma pilha de rede que tenta negociar um caminho moderno antes de cair para o protocolo antigo. Em um fluxo especifico, a negociacao aguarda um evento de progresso que nao chega quando o servidor responde com uma combinacao rara de parametros. Varias abas compartilham o mesmo loop de rede e novas navegacoes entram na mesma espera. Existe uma flag operacional para desativar o caminho moderno apos incidentes repetidos, mas a tentativa individual nao possui deadline curto por fase nem cancelamento que libere o loop antes do fallback. A UI aparenta travamento enquanto a pilha continua aguardando uma transicao de estado que nao ocorre.",
+  "case_healthy": "O cliente Ipe possui uma pilha de rede que tenta negociar transporte moderno antes de cair para o protocolo antigo. Cada fase da negociacao tem deadline curto e motivo de cancelamento separado: descoberta, handshake e primeira resposta. Se o servidor entra na combinacao rara que nao gera evento de progresso, a tentativa e cancelada e o fallback para protocolo antigo e executado sem bloquear o loop compartilhado. Um circuit breaker global ainda pode desativar o transporte experimental apos muitas falhas, mas o primeiro nivel de mitigacao e timeout calibrado por fase para impedir espera indefinida."
+}

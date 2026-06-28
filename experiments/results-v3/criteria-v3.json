@@ -1,0 +1,13 @@
+{
+  "manipulation_r4": true,
+  "manipulation_r3": true,
+  "manipulation_r5": false,
+  "void_controls": [
+    "R5_confident_wrong"
+  ],
+  "corpus_validity_r1_unsaturated": false,
+  "recall_discrimination_demonstrated": false,
+  "corrobora": false,
+  "falsifica": false,
+  "verdict": "INCONCLUSIVO"
+}

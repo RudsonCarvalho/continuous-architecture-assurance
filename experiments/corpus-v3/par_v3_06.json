@@ -1,0 +1,10 @@
+{
+  "pair_id": "V3-06",
+  "ground_truth": "T09",
+  "secondary": null,
+  "distractor_category": "T12",
+  "status": "draft-needs-human-review",
+  "source": "AWS Kinesis event summary, https://aws.amazon.com/message/11201/",
+  "case_fail": "O barramento Maralto mantem um mapa de shards em memoria e propaga alteracoes por um conjunto de workers. Cada worker abre uma thread para atualizar proprietarios de shard, publicar metricas e recalcular assinaturas de consumidores. A rotina de membership cria uma unidade de trabalho por shard ativo, e cada thread permanece aberta ate receber confirmacao sincrona dos componentes vizinhos. Os dashboards dimensionam o fleet por CPU e throughput agregados, ambos abaixo do limite. Numa janela de crescimento rapido, o numero de shards ativos sobe varias vezes em poucos minutos. A fila interna mostra pouca acumulacao por bytes, enquanto o numero de threads ocupadas por callbacks cresce continuamente.",
+  "case_healthy": "O barramento Maralto mantem um mapa de shards em memoria e propaga alteracoes por um conjunto de workers. A rotina de membership usa fila limitada, operacoes assíncronas e um pool separado para chamadas a componentes vizinhos. Cada atualizacao de shard tem deadline curto, cancelamento e metrica de threads ocupadas por tipo de tarefa. Em uma janela de crescimento rapido, trabalho excedente e agregado por shard e processado em lotes, evitando uma thread pendente por confirmacao. O sistema ainda pode precisar de mais capacidade agregada se o numero de shards crescer muito, mas a arquitetura impede que threads internas fiquem presas ate esgotar o pool."
+}

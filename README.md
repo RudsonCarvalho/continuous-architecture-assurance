@@ -2,7 +2,7 @@
 
 > A pluggable assurance layer for technical decisions. It does not produce another framework for judging architecture — it provides the mechanism that **calibrates** the frameworks you already use, and proves, against real incidents, whether they measure what they claim to measure.
 
-**Status:** Position paper + reference specification + pre-registered falsification experiment. This is an architecture and a hypothesis, not yet a validated result. The central efficacy claim is testable and the test is included in this repo (see [`/experiments`](./experiments)).
+**Status:** Draft v0.1. CAA is a proposed assurance framework. Its reviewer-calibration metric has **pilot empirical support on controlled textual incident pairs**, with important limitations — demonstrated on the false-positive axis across two independent corpora with real model calls, undemonstrated on the recall axis, and untested for misattribution detection. The full five-run study, raw data, pre-registrations, and reconstruction-ready records are in [`/experiments`](./experiments); the honest scorecard is in [`docs/overview.md`](./docs/overview.md). Not yet submitted anywhere.
 
 **Author:** Rudson Carvalho · Independent research
 **License:** see [LICENSE](./LICENSE) (Apache-2.0 for code, CC BY 4.0 for docs/spec — adjust as you prefer)
@@ -74,7 +74,7 @@ The components are old (assurance cases since the 1990s, dynamic safety cases si
 
 ## The honest caveat
 
-The claim that the recall/false-positive pairing actually discriminates good reviewers from bad ones is a **hypothesis**, not a result. It is falsifiable, and the experiment to falsify it — paired real-incident corpus, four reviewer conditions including two degenerate controls, pre-registered decision criteria — is in [`/experiments`](./experiments). Until that runs, CAA is a well-formed proposal held to exactly the standard it imposes on everything else.
+The claim that the recall/false-positive pairing discriminates good reviewers from bad ones has now been **tested across five runs** (see [`/experiments`](./experiments) and [`docs/papers/empirical-study.md`](./docs/papers/empirical-study.md)). The honest result: the pairing discriminates a contract reviewer from a naive one and both from two degenerate controls, replicated on two independent corpora with real model calls (false-positive axis); recall-axis discrimination among plausible reviewers could not be demonstrated (recall saturates on textual cases); and a misattribution control could not be constructed across three attempts. CAA is held to exactly the standard it imposes on everything else, and the limitations above are stated rather than hidden.
 
 ## Repository layout
 
@@ -89,15 +89,19 @@ The claim that the recall/false-positive pairing actually discriminates good rev
 │   ├── diagrams/
 │   │   ├── pipeline-v2.svg
 │   │   └── gate-vs-auditor.svg/png   # closed-predicate gate vs. open-model auditor
-│   ├── article.md                    # original position-paper draft (superseded by papers/position-paper.md)
 │   ├── pipeline-v2-diagram.svg
 │   └── pipeline-v2-diagram.png
+├── archive/
+│   └── article-superseded.md         # original draft, superseded by papers/position-paper.md
 ├── spec/
 │   └── verdict-contract.schema.json  # the pluggable interface (JSON Schema)
-├── experiments/
-│   ├── README.md
-│   ├── calibration-protocol-ptbr.md  # falsification protocol
-│   └── calib_experiment.py           # runnable skeleton (Anthropic API)
+├── experiments/                      # FULL DATA + CODE (reproducible)
+│   ├── README.md                     # what each file is, how to recompute
+│   ├── corpus-v2/  corpus-v3/        # the two 20-pair corpora (A and B)
+│   ├── results-v2/ results-v3-1/     # real runs (raw_results, run-log, scores, criteria)
+│   ├── results-v3-1-dryrun/          # the contaminated dry-run, kept on purpose
+│   ├── preregistration-v2/v3/v3-1.md # criteria fixed before each run
+│   └── calib_experiment*.py          # harness, evolved across iterations
 ├── CITATION.cff
 └── LICENSE
 ```

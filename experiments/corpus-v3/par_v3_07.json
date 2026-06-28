@@ -1,0 +1,10 @@
+{
+  "pair_id": "V3-07",
+  "ground_truth": "T10",
+  "secondary": null,
+  "distractor_category": "T12",
+  "status": "draft-needs-human-review",
+  "source": "Cloudflare July 2019 outage, https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019/",
+  "case_fail": "O filtro Aurora aplica regras de seguranca no caminho quente de todas as requisicoes. Uma mudanca de regra passa pelos testes sintaticos e e distribuida rapidamente para toda a borda. A regra contem uma expressao curta no arquivo, mas seu custo cresce com certos padroes de entrada e roda antes de qualquer amostragem. A distribuicao global ocorre em poucos minutos e os graficos por datacenter mostram aumento abrupto de CPU no processo que avalia regras. O pipeline mede validade da regra e sucesso do rollout, mas nao registra custo por regra em trafego representativo antes da promocao. Quando a avaliacao consome a margem da borda, as requisicoes comuns passam a competir pelo mesmo orcamento de CPU.",
+  "case_healthy": "O filtro Aurora aplica regras de seguranca no caminho quente de todas as requisicoes. Antes da distribuicao global, cada regra recebe um orcamento de CPU por avaliacao e passa por canario com trafego representativo e entradas adversariais. A borda mede custo por regra e desativa automaticamente a regra que excede o limite, mantendo a revisao para auditoria. O rollout continua sendo gradual e reversivel, mas a mitigacao principal e que uma expressao cara nao consegue consumir a margem de CPU compartilhada da borda inteira. Um deploy ruim ainda pode ser revertido, porem a saturacao de capacidade por regra e contida antes do impacto global."
+}

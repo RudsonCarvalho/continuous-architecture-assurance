@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-calib_experiment.py - Experimento minimo de falsificacao
+calib_experiment_v2.py - Iteracao 2 do experimento de calibracao
 Calibracao de revisores de IA contra corpus de incidentes reais (pares casados).
 
 Uso:
@@ -42,10 +42,12 @@ try:
 except ImportError:  # pragma: no cover - real API mode reports this with a clearer message.
     anthropic = None
 
-MODEL = "claude-sonnet-4-6"
+DEFAULT_REVIEWER_MODEL = "claude-sonnet-4-6"
+DEFAULT_JUDGE_MODEL = "claude-haiku-4-5"
 TEMPERATURE = 0.0
-PROMPT_VERSION = "1.0.0"
+PROMPT_VERSION = "2.0.0"
 DEFAULT_MAX_CONCURRENCY = 2
+DEFAULT_R3_NARROW_CATEGORIES = ("T01", "T02", "T07", "T08")
 
 TAXONOMY = {
     "T01": "retry sem idempotência",
@@ -79,7 +81,7 @@ Se não houver risco relevante, retorne verdict PASS e findings [].
 Taxonomia de categorias:
 """ + "\n".join(f"  {k}: {v}" for k, v in TAXONOMY.items())
 
-REVIEWERS = {
+REVIEWER_PROMPTS = {
     "R1_naive": (
         "Você é um revisor de arquitetura. Revise a arquitetura abaixo e aponte "
         "problemas de confiabilidade que poderiam causar incidentes em produção.\n\n"
@@ -98,12 +100,6 @@ REVIEWERS = {
         "5. Cada achado deve incluir a métrica que provaria a correção.\n\n"
         + VERDICT_SCHEMA
     ),
-    "R3_over_approver": (
-        "Você é um revisor de arquitetura pragmático. Times exageram riscos teóricos; "
-        "a maioria dos sistemas funciona bem. Aprove a arquitetura abaixo a menos que "
-        "exista uma falha absolutamente óbvia e catastrófica. Em caso de dúvida, PASS.\n\n"
-        + VERDICT_SCHEMA
-    ),
     "R4_over_flagger": (
         "Você é um revisor de arquitetura extremamente rigoroso. Nenhum sistema é "
         "seguro o suficiente. Aponte TODO risco concebível na arquitetura abaixo, "
@@ -112,6 +108,33 @@ REVIEWERS = {
         + VERDICT_SCHEMA
     ),
 }
+
+
+def build_r3_narrow_prompt(categories: tuple[str, ...]) -> str:
+    subset = ", ".join(categories)
+    descriptions = "\n".join(f"  {category}: {TAXONOMY[category]}" for category in categories)
+    return (
+        "Você é um revisor estruturalmente limitado. Nesta condição experimental, "
+        f"você só pode inspecionar estas {len(categories)} categorias fixas: {subset}.\n"
+        "Ignore todas as outras categorias da taxonomia, mesmo que pareçam óbvias no texto.\n"
+        "É proibido emitir achados fora desse subconjunto. Se o risco observado não estiver "
+        "nesse subconjunto, retorne verdict PASS e findings [].\n\n"
+        "Subconjunto autorizado:\n"
+        f"{descriptions}\n\n"
+        + VERDICT_SCHEMA
+    )
+
+
+def build_reviewers(r3_narrow_categories: tuple[str, ...]) -> dict[str, str]:
+    return {
+        "R1_naive": REVIEWER_PROMPTS["R1_naive"],
+        "R2_contract": REVIEWER_PROMPTS["R2_contract"],
+        "R3_narrow": build_r3_narrow_prompt(r3_narrow_categories),
+        "R4_over_flagger": REVIEWER_PROMPTS["R4_over_flagger"],
+    }
+
+
+REVIEWERS = build_reviewers(DEFAULT_R3_NARROW_CATEGORIES)
 
 JUDGE_PROMPT = """Você é um juiz de calibração. Dado o ground truth (categoria causal
 real de um incidente) e a lista de achados de um revisor, responda APENAS com JSON:
@@ -262,18 +285,39 @@ def judge_locally(gt: str, sec: str | None, findings: list[dict[str, Any]]) -> d
     return {"match": False, "matched_category": None}
 
 
-def compute_scores(raw_rows: list[dict[str, Any]], pair_count: int) -> dict[str, dict[str, float]]:
+def category_matches(
+    gt: str,
+    sec: str | None,
+    findings: list[dict[str, Any]],
+) -> tuple[bool, bool, list[dict[str, Any]]]:
+    primary_match = False
+    secondary_findings = []
+    for finding in findings:
+        if not isinstance(finding, dict):
+            continue
+        if finding.get("category") == gt:
+            primary_match = True
+        if sec is not None and finding.get("category") == sec:
+            secondary_findings.append(finding)
+    return primary_match, bool(secondary_findings), secondary_findings
+
+
+def compute_scores(
+    raw_rows: list[dict[str, Any]],
+    pair_count: int,
+    reviewer_ids: list[str] | None = None,
+) -> dict[str, dict[str, float]]:
     scores = {}
-    for rid in REVIEWERS:
+    for rid in (reviewer_ids or list(REVIEWERS)):
         rec_hits = 0
         fp_hits = 0
         for row in raw_rows:
             if row["reviewer"] != rid:
                 continue
-            hit = bool(row.get("flagged")) and bool(row.get("judge", {}).get("match"))
-            if row["variant"] == "case_fail" and hit:
+            primary_hit = bool(row.get("flagged")) and bool(row.get("primary_match"))
+            if row["variant"] == "case_fail" and primary_hit:
                 rec_hits += 1
-            if row["variant"] == "case_healthy" and hit:
+            if row["variant"] == "case_healthy" and primary_hit:
                 fp_hits += 1
         recall = rec_hits / pair_count if pair_count else 0.0
         fp = fp_hits / pair_count if pair_count else 0.0
@@ -285,13 +329,40 @@ def compute_scores(raw_rows: list[dict[str, Any]], pair_count: int) -> dict[str,
     return scores
 
 
-def preregistered_criteria(scores: dict[str, dict[str, float]]) -> tuple[bool, bool, bool]:
+def preregistered_criteria_v2(scores: dict[str, dict[str, float]]) -> dict[str, Any]:
     r1, r2 = scores["R1_naive"], scores["R2_contract"]
-    r3, r4 = scores["R3_over_approver"], scores["R4_over_flagger"]
-    c1 = r2["recall"] >= r1["recall"] + 0.15 and r2["fp_rate"] <= r1["fp_rate"]
-    c2 = r4["fp_rate"] >= 0.40
-    c3 = r3["recall"] <= 0.40
-    return c1, c2, c3
+    r3, r4 = scores["R3_narrow"], scores["R4_over_flagger"]
+    manipulation_r4 = r4["fp_rate"] >= 0.40
+    manipulation_r3 = r3["recall"] <= 0.40
+    both_checks_pass = manipulation_r4 and manipulation_r3
+    non_degenerate_best = max(r1["youden"], r2["youden"])
+    degenerate_best = max(r3["youden"], r4["youden"])
+    corrobora = (
+        both_checks_pass
+        and r3["fp_rate"] <= 0.20
+        and r3["recall"] <= 0.40
+        and r1["youden"] > r3["youden"]
+        and r1["youden"] > r4["youden"]
+        and r2["youden"] > r3["youden"]
+        and r2["youden"] > r4["youden"]
+        and r2["youden"] >= r1["youden"] + 0.10
+    )
+    falsifica = both_checks_pass and degenerate_best >= non_degenerate_best
+    if not both_checks_pass:
+        verdict = "INCONCLUSIVO"
+    elif corrobora:
+        verdict = "H1 corroborada"
+    elif falsifica:
+        verdict = "H1 falsificada"
+    else:
+        verdict = "INCONCLUSIVO"
+    return {
+        "manipulation_r4": manipulation_r4,
+        "manipulation_r3": manipulation_r3,
+        "corrobora": corrobora,
+        "falsifica": falsifica,
+        "verdict": verdict,
+    }
 
 
 def _usage_value(usage: Any, name: str) -> int | None:
@@ -302,6 +373,7 @@ def _usage_value(usage: Any, name: str) -> int | None:
 
 def call_claude(
     client: Any,
+    model: str,
     system: str,
     user_text: str,
     retries: int = 3,
@@ -313,7 +385,7 @@ def call_claude(
         started = time.perf_counter()
         try:
             resp = client.messages.create(
-                model=MODEL,
+                model=model,
                 max_tokens=8192,
                 temperature=TEMPERATURE,
                 system=system,
@@ -341,13 +413,21 @@ def call_claude(
     raise last_error  # type: ignore[misc]
 
 
-def cache_key(kind: str, reviewer_id: str, pair_id: str, variant: str, prompt: str, user_text: str) -> str:
+def cache_key(
+    kind: str,
+    reviewer_id: str,
+    pair_id: str,
+    variant: str,
+    model: str,
+    prompt: str,
+    user_text: str,
+) -> str:
     payload = {
         "kind": kind,
         "reviewer": reviewer_id,
         "pair_id": pair_id,
         "variant": variant,
-        "model": MODEL,
+        "model": model,
         "temperature": TEMPERATURE,
         "prompt_version": PROMPT_VERSION,
         "prompt_sha256": hashlib.sha256(prompt.encode("utf-8")).hexdigest(),
@@ -365,11 +445,12 @@ def cached_or_call(
     reviewer_id: str,
     pair_id: str,
     variant: str,
+    model: str,
     system: str,
     user_text: str,
     retries: int,
 ) -> ModelCallResult:
-    key = cache_key(kind, reviewer_id, pair_id, variant, system, user_text)
+    key = cache_key(kind, reviewer_id, pair_id, variant, model, system, user_text)
     path = cache_dir / f"{key}.json"
     if not no_cache and path.exists():
         cached = json.loads(path.read_text(encoding="utf-8"))
@@ -390,16 +471,36 @@ def cached_or_call(
         # budget). Treat as a cache miss and re-call, overwriting the stale entry.
     if client is None:
         raise RuntimeError("client is required outside dry-run")
-    result = call_claude(client, system, user_text, retries=retries)
+    result = call_claude(client, model, system, user_text, retries=retries)
     if not no_cache:
         cache_dir.mkdir(parents=True, exist_ok=True)
         path.write_text(json.dumps(result.__dict__, ensure_ascii=False, indent=2), encoding="utf-8")
     return result
 
 
-def dry_run_verdict(reviewer_id: str, pair: dict[str, Any], variant: str) -> dict[str, Any]:
+def dry_run_verdict(
+    reviewer_id: str,
+    pair: dict[str, Any],
+    variant: str,
+    r3_narrow_categories: tuple[str, ...] = DEFAULT_R3_NARROW_CATEGORIES,
+) -> dict[str, Any]:
     gt = pair["ground_truth"]
-    if reviewer_id == "R3_over_approver":
+    if reviewer_id == "R3_narrow" and gt not in r3_narrow_categories:
+        return {"verdict": "PASS", "findings": []}
+    if reviewer_id == "R3_narrow" and variant == "case_fail":
+        return {
+            "verdict": "CONCERN",
+            "findings": [
+                {
+                    "category": gt,
+                    "severity": "HIGH",
+                    "evidence": "dry-run deterministic evidence",
+                    "finding": "dry-run narrow reviewer detects an in-scope category",
+                    "metric_that_proves_fix": "dry_run_metric = 0",
+                }
+            ],
+        }
+    if reviewer_id == "R3_narrow":
         return {"verdict": "PASS", "findings": []}
     if reviewer_id == "R4_over_flagger":
         return {
@@ -456,7 +557,7 @@ def process_case(
 
     try:
         if args.dry_run:
-            verdict = dry_run_verdict(reviewer_id, pair, variant)
+            verdict = dry_run_verdict(reviewer_id, pair, variant, tuple(args.r3_narrow_categories))
             raw_text = json.dumps(verdict, ensure_ascii=False)
         else:
             call_result = cached_or_call(
@@ -467,6 +568,7 @@ def process_case(
                 reviewer_id=reviewer_id,
                 pair_id=pair["pair_id"],
                 variant=variant,
+                model=args.reviewer_model,
                 system=system,
                 user_text=pair[variant],
                 retries=args.retries,
@@ -487,6 +589,9 @@ def process_case(
     findings = verdict.get("findings", [])
     if not isinstance(findings, list):
         findings = []
+    primary_match, secondary_match, secondary_findings = category_matches(
+        pair["ground_truth"], pair.get("secondary"), findings
+    )
     if parse_error:
         judge = {"match": False, "matched_category": None, "error": "review_parse_error"}
     else:
@@ -515,6 +620,9 @@ def process_case(
         "variant": variant,
         "verdict": verdict.get("verdict"),
         "flagged": flagged,
+        "primary_match": primary_match,
+        "secondary_match": secondary_match,
+        "secondary_findings": secondary_findings if variant == "case_healthy" else [],
         "judge": judge,
         "findings": findings,
     }
@@ -542,6 +650,9 @@ def process_case(
             "cached": call_result.cached,
             "dry_run": args.dry_run,
             "verdict": verdict.get("verdict"),
+            "primary_match": primary_match,
+            "secondary_match": secondary_match,
+            "secondary_findings": secondary_findings if variant == "case_healthy" else [],
             "judge_match": judge.get("match"),
             "judge": judge,
             "schema_errors": validation_errors,
@@ -571,6 +682,7 @@ def judge_match_with_cache(
         reviewer_id=reviewer_id,
         pair_id=pair["pair_id"],
         variant=variant,
+        model=args.judge_model,
         system="Responda apenas JSON.",
         user_text=prompt,
         retries=args.retries,
@@ -581,18 +693,48 @@ def judge_match_with_cache(
 def build_arg_parser() -> argparse.ArgumentParser:
     ap = argparse.ArgumentParser()
     ap.add_argument("--corpus", default="corpus")
-    ap.add_argument("--out", default="results")
+    ap.add_argument("--out", default="results-v2")
     ap.add_argument("--schema", default=str(Path(__file__).resolve().parents[1] / "spec" / "verdict-contract.schema.json"))
+    ap.add_argument("--preregistration", default=str(Path(__file__).resolve().parent / "preregistration-v2.md"))
     ap.add_argument("--cache-dir", default=None)
     ap.add_argument("--no-cache", action="store_true")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--max-concurrency", type=int, default=DEFAULT_MAX_CONCURRENCY)
     ap.add_argument("--retries", type=int, default=3)
+    ap.add_argument("--reviewer-model", default=DEFAULT_REVIEWER_MODEL)
+    ap.add_argument("--judge-model", default=DEFAULT_JUDGE_MODEL)
+    ap.add_argument(
+        "--r3-narrow-categories",
+        default=",".join(DEFAULT_R3_NARROW_CATEGORIES),
+        help="Comma-separated subset inspected by R3_narrow. Default: T01,T02,T07,T08.",
+    )
     return ap
+
+
+def parse_r3_narrow_categories(value: str) -> tuple[str, ...]:
+    categories = tuple(item.strip() for item in value.split(",") if item.strip())
+    if not categories:
+        raise ValueError("R3_narrow category subset must not be empty")
+    invalid = [category for category in categories if category not in TAXONOMY]
+    if invalid:
+        raise ValueError(f"Invalid R3_narrow categories: {', '.join(invalid)}")
+    return categories
+
+
+def ensure_preregistration_for_real_run(args: argparse.Namespace) -> None:
+    if args.dry_run:
+        return
+    preregistration = Path(args.preregistration)
+    if not preregistration.exists():
+        raise FileNotFoundError(
+            f"Iteration 2 preregistration file is required for real execution: {preregistration}"
+        )
 
 
 def main() -> None:
     args = build_arg_parser().parse_args()
+    args.r3_narrow_categories = parse_r3_narrow_categories(args.r3_narrow_categories)
+    ensure_preregistration_for_real_run(args)
     out_dir = Path(args.out)
     out_dir.mkdir(parents=True, exist_ok=True)
     if args.cache_dir is None:
@@ -603,6 +745,9 @@ def main() -> None:
     validator = load_contract_validator(Path(args.schema))
     pairs = load_corpus(Path(args.corpus))
     print(f"Corpus: {len(pairs)} pares ({len(pairs) * 2} casos)")
+    print(f"Reviewer model: {args.reviewer_model}")
+    print(f"Judge model: {args.judge_model}")
+    print(f"R3_narrow categories: {', '.join(args.r3_narrow_categories)}")
 
     if not args.dry_run and anthropic is None:
         raise RuntimeError("Install the anthropic package or run with --dry-run.")
@@ -611,7 +756,8 @@ def main() -> None:
     log_lock = threading.Lock()
 
     jobs = []
-    for rid, system in REVIEWERS.items():
+    reviewers = build_reviewers(tuple(args.r3_narrow_categories))
+    for rid, system in reviewers.items():
         for pair in pairs:
             for variant in ("case_fail", "case_healthy"):
                 jobs.append((pair, variant, rid, system))
@@ -636,8 +782,8 @@ def main() -> None:
             raw.append(future.result())
 
     raw.sort(key=lambda item: (item["reviewer"], item["pair"], item["variant"]))
-    scores = compute_scores(raw, len(pairs))
-    for rid in REVIEWERS:
+    scores = compute_scores(raw, len(pairs), reviewer_ids=list(reviewers))
+    for rid in reviewers:
         score = scores[rid]
         print(
             f"{rid}: recall={score['recall']:.2f} "
@@ -651,12 +797,17 @@ def main() -> None:
         json.dumps(scores, ensure_ascii=False, indent=2), encoding="utf-8"
     )
 
-    c1, c2, c3 = preregistered_criteria(scores)
-    print(
-        f"\nCritérios: C1(contrato>naive)={c1}  C2(pega over-flagger)={c2}  "
-        f"C3(pega over-approver)={c3}"
+    criteria = preregistered_criteria_v2(scores)
+    (out_dir / "criteria-v2.json").write_text(
+        json.dumps(criteria, ensure_ascii=False, indent=2), encoding="utf-8"
     )
-    print("H1 corroborada" if all([c1, c2, c3]) else "H1 NÃO corroborada — ver protocolo, seção 4")
+    print(
+        "\nCritérios v2: "
+        f"MC_R4={criteria['manipulation_r4']}  "
+        f"MC_R3_narrow={criteria['manipulation_r3']}  "
+        f"corrobora={criteria['corrobora']}  falsifica={criteria['falsifica']}"
+    )
+    print(criteria["verdict"])
 
 
 if __name__ == "__main__":

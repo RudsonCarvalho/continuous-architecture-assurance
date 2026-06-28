@@ -1,0 +1,10 @@
+{
+  "pair_id": "V3-13",
+  "ground_truth": "T11",
+  "secondary": null,
+  "distractor_category": "T02",
+  "status": "draft-needs-human-review",
+  "source": "PagerDuty DNS/container orchestration config incident via danluu/post-mortems, https://github.com/danluu/post-mortems",
+  "case_fail": "A malha Quati inicia containers consultando um resolvedor de nomes gerenciado fora do cluster. O resolvedor tambem e usado por servicos ja em execucao para descobrir bancos e filas. Uma mudanca de DNS no ambiente de orquestracao faz novas consultas falharem, mas processos existentes continuam vivos ate precisarem reconectar. Novos containers ficam aguardando nomes criticos, e servicos reiniciados nao encontram bancos, filas ou registry. A configuracao local dos nos nao contem cache assinado de ultimo estado valido nem lista bootstrap para esses nomes. Os timeouts de inicializacao aparecem nos logs, mas o cluster tambem perde o mecanismo necessario para iniciar substitutos quando a resolucao externa fica indisponivel.",
+  "case_healthy": "A malha Quati inicia containers consultando um resolvedor de nomes gerenciado fora do cluster. Para nomes criticos de bancos, filas e registry, cada no mantem cache assinado de ultimo estado valido e uma lista curta de endpoints bootstrap fora do DNS principal. Se uma mudanca no resolvedor quebra consultas novas, servicos existentes continuam e substitutos conseguem iniciar usando o cache ate a janela de emergencia expirar. Timeouts ainda existem para evitar bloqueio longo, mas a mitigacao principal e o fallback para a dependencia de resolucao, impedindo que um componente externo de descoberta impeça toda recuperacao."
+}

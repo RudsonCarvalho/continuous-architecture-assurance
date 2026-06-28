@@ -1,0 +1,10 @@
+{
+  "pair_id": "V3-01",
+  "ground_truth": "T12",
+  "secondary": null,
+  "distractor_category": "T02",
+  "status": "draft-needs-human-review",
+  "source": "AWS EC2 DNS Seoul resolver capacity summary, https://aws.amazon.com/message/74876-2/",
+  "case_fail": "A plataforma Alvorada opera um servico interno de resolucao de nomes para workloads de uma regiao. O plano de manutencao permite que o orquestrador remova instancias do fleet quando recebe uma configuracao regional nova. O arquivo altera o perfil de drenagem e deixa o valor minimo de hosts saudaveis implicito; o controlador aplica o default da biblioteca quando o campo nao aparece. Clientes passam a observar falhas intermitentes de lookup e varias chamadas estouram a janela de espera do SDK. Os dashboards de disponibilidade mostram menos instancias respondendo, mas a etapa de aceitacao da configuracao valida apenas a sintaxe do arquivo e nao compara a capacidade resultante com a demanda regional prevista para aquele horario.",
+  "case_healthy": "A plataforma Alvorada opera um servico interno de resolucao de nomes para workloads de uma regiao. O plano de manutencao permite que o orquestrador remova instancias do fleet quando recebe uma configuracao regional nova. O arquivo altera o perfil de drenagem, mas o pipeline exige valor explicito para o minimo de hosts saudaveis e rejeita qualquer default abaixo da demanda regional medida. Alem disso, o controlador limita a quantidade de hosts removidos por hora e bloqueia novas drenagens se a margem de capacidade cair abaixo do alvo. Clientes ainda podem observar timeouts isolados durante manutencoes, mas a arquitetura impede que uma configuracao ambigua reduza o fleet para menos capacidade do que a regiao precisa."
+}

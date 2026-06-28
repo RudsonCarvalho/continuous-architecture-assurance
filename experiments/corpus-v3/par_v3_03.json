@@ -1,0 +1,10 @@
+{
+  "pair_id": "V3-03",
+  "ground_truth": "T03",
+  "secondary": null,
+  "distractor_category": "T10",
+  "status": "draft-needs-human-review",
+  "source": "Cloudflare Tiered Cache outage entry via danluu/post-mortems, https://github.com/danluu/post-mortems",
+  "case_fail": "A rede Candeia introduz uma camada intermediaria de cache para reduzir leituras na origem. O roteador escolhe um no superior por regiao e grava metadados de popularidade com TTL comum de quinze minutos. Um release altera a forma de calcular a chave de agrupamento; os canarios validam respostas individuais e nao simulam lotes de objetos que entram no cache na mesma janela. Em carga normal, paginas populares compartilham horario de criacao parecido e envelhecem juntas. Minutos depois do release, os graficos mostram muitas leituras deixando os nos inferiores no mesmo intervalo curto, quase todas direcionadas ao mesmo caminho regional. Os dashboards por objeto mostram expiracoes validas individualmente, mas nao exibem quantas chaves ficam pendentes ao mesmo tempo no nivel intermediario.",
+  "case_healthy": "A rede Candeia introduz uma camada intermediaria de cache para reduzir leituras na origem. O roteador escolhe um no superior por regiao, mas os metadados de popularidade usam TTL com jitter por objeto e uma trava de revalidacao por chave. Quando um item popular expira, apenas um no faz a busca de renovacao e os demais recebem resposta stale por uma janela curta. O release que altera a chave de agrupamento passa por canario com teste de expiracao sincronizada e limite de fan-in no superior. O deploy ainda poderia conter bug funcional, mas a arquitetura nao permite que muitos caches inferiores revalidem a mesma chave ao mesmo tempo."
+}

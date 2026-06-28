@@ -1,0 +1,10 @@
+{
+  "pair_id": "V3-08",
+  "ground_truth": "T05",
+  "secondary": null,
+  "distractor_category": "T09",
+  "status": "draft-needs-human-review",
+  "source": "CircleCI queue backlog summaries via danluu/post-mortems, https://github.com/danluu/post-mortems",
+  "case_fail": "O orquestrador Jangada move jobs por tres filas: recebido, elegivel e alocado. Quando o banco primario atrasa, consumidores da segunda fila interpretam a ausencia de confirmacao como perda temporaria e recolocam o mesmo job na fila anterior. O mecanismo foi escrito para reduzir perda de trabalho, mas nao carrega um identificador de tentativa global nem backoff coordenado por job. Durante recuperacao, operadores promovem manualmente um lote represado e muitos consumidores passam a reprocessar os mesmos jobs em paralelo. As metricas mostram workers ocupados e filas longas, enquanto o contador de tentativas por job cresce mais rapido que o numero de jobs distintos recebidos.",
+  "case_healthy": "O orquestrador Jangada move jobs por tres filas: recebido, elegivel e alocado. Quando o banco primario atrasa, consumidores registram a tentativa em uma tabela compacta por job e apenas o dono atual pode recolocar a tarefa. O reenvio usa backoff exponencial com jitter e um limite global de tentativas por janela. Durante recuperacao, a promocao manual de lote respeita tokens de drenagem e nao libera todos os jobs represados de uma vez. Os workers ainda podem ficar ocupados se houver backlog real, mas a arquitetura impede que multiplos consumidores dupliquem o mesmo trabalho e transformem uma fila atrasada em storm de retry."
+}

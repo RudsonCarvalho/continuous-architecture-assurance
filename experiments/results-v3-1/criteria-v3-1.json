@@ -1,0 +1,16 @@
+{
+  "manipulation_r4": true,
+  "manipulation_r3": true,
+  "manipulation_r5": true,
+  "manipulation_r5_form": true,
+  "manipulation_r5_plausible": true,
+  "r5_plausible_misattribution_min_rate": 0.2,
+  "void_controls": [],
+  "corpus_validity_r1_unsaturated": false,
+  "corpus_validity_r1_non_silent": true,
+  "corpus_validity_pass": false,
+  "recall_discrimination_demonstrated": false,
+  "corrobora": false,
+  "falsifica": false,
+  "verdict": "INCONCLUSIVO"
+}

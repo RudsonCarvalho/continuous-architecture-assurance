@@ -1,0 +1,10 @@
+{
+  "pair_id": "V3-05",
+  "ground_truth": "T04",
+  "secondary": null,
+  "distractor_category": "T07",
+  "status": "draft-needs-human-review",
+  "source": "GitHub October 2018 post-incident analysis, https://github.blog/news-insights/company-news/oct21-post-incident-analysis/",
+  "case_fail": "O produto Estuario replica dados de conta entre duas regioes ativas. O mecanismo de failover promove automaticamente um lado quando perde contato com o outro e a camada de aplicacao continua aceitando escritas se a regiao local parecer saudavel. Durante uma particao curta, cada lado observa quorum local suficiente e elege um primario. Operadores tambem discutem bloquear trafego durante a incerteza, mas o caminho de escrita atual nao carrega token global de epoca nem cerca que invalide mutacoes emitidas pelo primario anterior. As duas regioes gravam alteracoes para as mesmas entidades usando logs localmente validos. Quando a conectividade volta, os historicos possuem ordens diferentes para contas que receberam atualizacoes nos dois lados.",
+  "case_healthy": "O produto Estuario replica dados de conta entre duas regioes ativas. O mecanismo de failover promove um lado apenas quando adquire um token global de epoca em um coordenador separado, e a camada de aplicacao rejeita escritas com epoca antiga. Durante uma particao curta, uma regiao pode continuar servindo leituras locais, mas mutacoes para entidades globais entram em modo somente leitura ate haver primario unico confirmado. O sistema ainda pode degradar por falta de circuit breaker em dependencias perifericas, mas nao aceita duas historias de escrita concorrentes para a mesma conta. Ao restaurar conectividade, os logs compartilham uma ordem unica de epocas."
+}

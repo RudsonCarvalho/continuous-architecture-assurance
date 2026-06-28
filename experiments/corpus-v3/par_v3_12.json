@@ -1,0 +1,10 @@
+{
+  "pair_id": "V3-12",
+  "ground_truth": "T10",
+  "secondary": null,
+  "distractor_category": "T04",
+  "status": "draft-needs-human-review",
+  "source": "Rust crates.io deployment outage entry via danluu/post-mortems, https://github.com/danluu/post-mortems",
+  "case_fail": "O repositorio Sabiá serve artefatos por URLs geradas por uma funcao de roteamento. Um deploy muda o formato do caminho para incluir uma nova subpasta logica. Durante a janela, indices novos apontam para o formato novo enquanto caches e mirrors antigos ainda esperam o formato anterior. A equipe trata a alteracao como codigo reversivel e planeja voltar apenas o binario se houver problema. O deploy tambem grava referencias persistentes que clientes e mirrors passam a armazenar fora do controle do servico. Depois que essas referencias sao publicadas, uma reversao do binario volta a gerar caminhos antigos, mas nao traduz nem remove os caminhos novos ja distribuidos.",
+  "case_healthy": "O repositorio Sabiá serve artefatos por URLs geradas por uma funcao de roteamento. O novo formato de caminho e introduzido atras de flag: primeiro a aplicacao passa a ler os dois formatos, depois escreve referencias novas em uma tabela sombra, e somente apos validacao publica URLs do novo padrao. O rollback desativa a flag e mantem tradutor para referencias ja emitidas. Clientes e mirrors antigos continuam resolvendo caminhos antigos ate a migracao ser concluida. Ainda ha metadados em dois formatos temporariamente, mas existe caminho documentado para voltar sem deixar referencias persistentes ilegíveis."
+}

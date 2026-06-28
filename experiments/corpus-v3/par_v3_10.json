@@ -1,0 +1,10 @@
+{
+  "pair_id": "V3-10",
+  "ground_truth": "T07",
+  "secondary": null,
+  "distractor_category": "T11",
+  "status": "draft-needs-human-review",
+  "source": "GoCardless database cluster outage summaries via danluu/post-mortems, https://github.com/danluu/post-mortems",
+  "case_fail": "A API Marfim consulta um cluster de consenso para descobrir o no primario antes de cada operacao financeira. Em condicoes normais, a consulta custa poucos milissegundos. Em uma combinacao rara de perda de conectividade e reeleicao lenta, o descobridor de primario comeca a responder de forma intermitente. A API continua chamando o descobridor para cada requisicao e aguarda a resposta completa, porque a dependencia e considerada interna e confiavel. Nao existe estado local de circuito aberto, meia-abertura ou limite de sondagens para esse caminho. Quando as falhas se repetem, cada requisicao nova adiciona outra chamada lenta ao mesmo componente degradado.",
+  "case_healthy": "A API Marfim consulta um cluster de consenso para descobrir o no primario antes de operacoes financeiras. A consulta e protegida por circuit breaker local: apos falhas repetidas, a API para de chamar o descobridor por uma janela curta, usa apenas primario previamente validado para leituras seguras e rejeita escritas com erro rapido quando nao ha primario confiavel. O breaker tem meia-abertura com poucas sondagens e metrica visivel. A dependencia interna ainda pode falhar, mas a aplicacao nao multiplica chamadas lentas nem deixa todas as requisicoes presas esperando o componente degradado."
+}

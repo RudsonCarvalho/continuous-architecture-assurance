@@ -1,0 +1,10 @@
+{
+  "pair_id": "V3-18",
+  "ground_truth": "T05",
+  "secondary": null,
+  "distractor_category": "T01",
+  "status": "draft-needs-human-review",
+  "source": "GitHub App permissions retry-on-timeout incident summary via danluu/post-mortems, https://github.com/danluu/post-mortems",
+  "case_fail": "O servico Mandacaru emite tokens de autorizacao consultando permissoes de apps. Um endpoint de permissao fica mais lento para instalacoes com muitas regras. O chamador trata timeout como erro transitorio e abre nova tentativa imediatamente, mantendo a tentativa anterior ainda em execucao no servidor. O token final usa identificador deterministico e respostas repetidas convergem para o mesmo valor, mas cada tentativa dispara uma nova consulta cara ao backend de permissoes. Durante a degradacao, o numero de consultas simultaneas por instalacao cresce a cada timeout. A latencia maior gera novas expiracoes, que por sua vez adicionam mais trabalho ao mesmo caminho.",
+  "case_healthy": "O servico Mandacaru emite tokens de autorizacao consultando permissoes de apps. O endpoint de permissao tem deadline menor que o chamador e propaga cancelamento para a consulta de backend. Retries usam backoff com jitter e um limite por instalacao, e ha cache curto para respostas de permissoes enquanto o backend esta lento. O token final continua idempotente, mas a arquitetura tambem impede que uma tentativa expirada continue consumindo recursos e que o chamador abra varias consultas caras em paralelo. Timeouts ainda ocorrem, porem nao se transformam em storm contra o backend de autorizacao."
+}

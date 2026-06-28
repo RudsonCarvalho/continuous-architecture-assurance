@@ -1,0 +1,10 @@
+{
+  "pair_id": "V3-20",
+  "ground_truth": "T11",
+  "secondary": null,
+  "distractor_category": "T10",
+  "status": "draft-needs-human-review",
+  "source": "Salesforce policy/resource access disruption entry via danluu/post-mortems, https://github.com/danluu/post-mortems",
+  "case_fail": "O portal Carnauba valida login e acesso a recursos consultando um servico central de politica administrado por outra equipe. Uma revisao de controles muda uma regra de escopo e passa pelos testes do servico de politica, mas bloqueia metadados que varias aplicacoes precisam para iniciar sessao. A mudanca e recente e poderia ser revertida no servico central, mas as aplicacoes dependentes consultam a politica em tempo real em todo login. Elas nao mantem cache assinado de politicas previamente validas para escopos essenciais nem modo degradado para usuarios ja autorizados. Quando a politica central nega ou fica inacessivel, varios produtos perdem acesso basico ao mesmo tempo.",
+  "case_healthy": "O portal Carnauba valida login e acesso a recursos consultando um servico central de politica administrado por outra equipe. Aplicacoes mantem cache assinado de politicas previamente validas para escopos essenciais e distinguem negacao explicita de falha ou ausencia da dependencia. Uma revisao de controles ainda passa por pipeline separado, mas se bloquear metadados necessarios o portal entra em modo degradado de leitura para usuarios ja autorizados ate a politica ser corrigida. A mudanca pode exigir rollback, porem a arquitetura nao depende exclusivamente do servico central em tempo real para manter acesso basico."
+}

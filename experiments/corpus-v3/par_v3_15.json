@@ -1,0 +1,10 @@
+{
+  "pair_id": "V3-15",
+  "ground_truth": "T10",
+  "secondary": null,
+  "distractor_category": "T12",
+  "status": "draft-needs-human-review",
+  "source": "TravisCI image cleanup/config rollback incidents via danluu/post-mortems, https://github.com/danluu/post-mortems",
+  "case_fail": "A plataforma Tapir publica imagens base para executores de build. Um job automatico remove imagens antigas quando elas deixam de aparecer no manifesto corrente. O deploy de uma nova geracao de imagens atualiza o manifesto antes de validar que todos os executores conseguem baixar a nova base. Durante a propagacao, imagens antigas sao removidas e novos executores falham ao iniciar. As filas de build crescem rapidamente e a equipe observa pouca capacidade efetiva de workers. O manifesto anterior nao permanece protegido por janela de retencao, e o job de limpeza nao espera a confirmacao de download nas regioes consumidoras antes de apagar os artefatos antigos.",
+  "case_healthy": "A plataforma Tapir publica imagens base para executores de build. O manifesto de nova geracao e publicado primeiro como candidato, enquanto imagens antigas ficam protegidas por uma janela de retencao. Executores baixam e validam a nova base em canario antes que ela se torne default. Se qualquer regiao falha, o manifesto volta para a versao anterior e o job de limpeza permanece bloqueado. Filas podem crescer durante a validacao, mas o rollback e seguro porque os artefatos antigos continuam disponiveis e referenciaveis ate todos os consumidores provarem compatibilidade com a nova imagem."
+}

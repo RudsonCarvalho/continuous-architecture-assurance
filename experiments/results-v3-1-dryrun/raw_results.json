@@ -1,0 +1,5442 @@
+[
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-01",
+    "variant": "case_fail",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-01",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-02",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T04"
+    },
+    "findings": [
+      {
+        "category": "T04",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run naive reviewer detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-02",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-03",
+    "variant": "case_fail",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-03",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-04",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T02"
+    },
+    "findings": [
+      {
+        "category": "T02",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run naive reviewer detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-04",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-05",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T04"
+    },
+    "findings": [
+      {
+        "category": "T04",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run naive reviewer detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-05",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-06",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T09"
+    },
+    "findings": [
+      {
+        "category": "T09",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run naive reviewer detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-06",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-07",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T10"
+    },
+    "findings": [
+      {
+        "category": "T10",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run naive reviewer detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-07",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-08",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T05"
+    },
+    "findings": [
+      {
+        "category": "T05",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run naive reviewer detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-08",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-09",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T06"
+    },
+    "findings": [
+      {
+        "category": "T06",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run naive reviewer detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-09",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-10",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T07"
+    },
+    "findings": [
+      {
+        "category": "T07",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run naive reviewer detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-10",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-11",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T01"
+    },
+    "findings": [
+      {
+        "category": "T01",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run naive reviewer detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-11",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-12",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T10"
+    },
+    "findings": [
+      {
+        "category": "T10",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run naive reviewer detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-12",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-13",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T11"
+    },
+    "findings": [
+      {
+        "category": "T11",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run naive reviewer detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-13",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-14",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T08"
+    },
+    "findings": [
+      {
+        "category": "T08",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run naive reviewer detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-14",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-15",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T10"
+    },
+    "findings": [
+      {
+        "category": "T10",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run naive reviewer detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-15",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-16",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T02"
+    },
+    "findings": [
+      {
+        "category": "T02",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run naive reviewer detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-16",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-17",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T06"
+    },
+    "findings": [
+      {
+        "category": "T06",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run naive reviewer detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-17",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-18",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T05"
+    },
+    "findings": [
+      {
+        "category": "T05",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run naive reviewer detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-18",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-19",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T09"
+    },
+    "findings": [
+      {
+        "category": "T09",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run naive reviewer detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-19",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-20",
+    "variant": "case_fail",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R1_naive",
+    "pair": "V3-20",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-01",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T12"
+    },
+    "findings": [
+      {
+        "category": "T12",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-01",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-02",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T04"
+    },
+    "findings": [
+      {
+        "category": "T04",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-02",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-03",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T03"
+    },
+    "findings": [
+      {
+        "category": "T03",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-03",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-04",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T02"
+    },
+    "findings": [
+      {
+        "category": "T02",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-04",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-05",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T04"
+    },
+    "findings": [
+      {
+        "category": "T04",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-05",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-06",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T09"
+    },
+    "findings": [
+      {
+        "category": "T09",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-06",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-07",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T10"
+    },
+    "findings": [
+      {
+        "category": "T10",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-07",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-08",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T05"
+    },
+    "findings": [
+      {
+        "category": "T05",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-08",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-09",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T06"
+    },
+    "findings": [
+      {
+        "category": "T06",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-09",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-10",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T07"
+    },
+    "findings": [
+      {
+        "category": "T07",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-10",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-11",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T01"
+    },
+    "findings": [
+      {
+        "category": "T01",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-11",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-12",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T10"
+    },
+    "findings": [
+      {
+        "category": "T10",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-12",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-13",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T11"
+    },
+    "findings": [
+      {
+        "category": "T11",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-13",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-14",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T08"
+    },
+    "findings": [
+      {
+        "category": "T08",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-14",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-15",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T10"
+    },
+    "findings": [
+      {
+        "category": "T10",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-15",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-16",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T02"
+    },
+    "findings": [
+      {
+        "category": "T02",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-16",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-17",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T06"
+    },
+    "findings": [
+      {
+        "category": "T06",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-17",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-18",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T05"
+    },
+    "findings": [
+      {
+        "category": "T05",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-18",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-19",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T09"
+    },
+    "findings": [
+      {
+        "category": "T09",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-19",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-20",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T11"
+    },
+    "findings": [
+      {
+        "category": "T11",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run detects the ground-truth category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R2_contract",
+    "pair": "V3-20",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-01",
+    "variant": "case_fail",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-01",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-02",
+    "variant": "case_fail",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-02",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-03",
+    "variant": "case_fail",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-03",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-04",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T02"
+    },
+    "findings": [
+      {
+        "category": "T02",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run narrow reviewer detects an in-scope category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-04",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-05",
+    "variant": "case_fail",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-05",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-06",
+    "variant": "case_fail",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-06",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-07",
+    "variant": "case_fail",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-07",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-08",
+    "variant": "case_fail",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-08",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-09",
+    "variant": "case_fail",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-09",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-10",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T07"
+    },
+    "findings": [
+      {
+        "category": "T07",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run narrow reviewer detects an in-scope category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-10",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-11",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T01"
+    },
+    "findings": [
+      {
+        "category": "T01",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run narrow reviewer detects an in-scope category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-11",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-12",
+    "variant": "case_fail",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-12",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-13",
+    "variant": "case_fail",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-13",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-14",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T08"
+    },
+    "findings": [
+      {
+        "category": "T08",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run narrow reviewer detects an in-scope category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-14",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-15",
+    "variant": "case_fail",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-15",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-16",
+    "variant": "case_fail",
+    "verdict": "CONCERN",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T02"
+    },
+    "findings": [
+      {
+        "category": "T02",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run narrow reviewer detects an in-scope category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-16",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-17",
+    "variant": "case_fail",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-17",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-18",
+    "variant": "case_fail",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-18",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-19",
+    "variant": "case_fail",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-19",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-20",
+    "variant": "case_fail",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R3_narrow",
+    "pair": "V3-20",
+    "variant": "case_healthy",
+    "verdict": "PASS",
+    "flagged": false,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": []
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-01",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T12"
+    },
+    "findings": [
+      {
+        "category": "T12",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-01",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T12"
+    },
+    "findings": [
+      {
+        "category": "T12",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-02",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T04"
+    },
+    "findings": [
+      {
+        "category": "T04",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-02",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T04"
+    },
+    "findings": [
+      {
+        "category": "T04",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-03",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T03"
+    },
+    "findings": [
+      {
+        "category": "T03",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-03",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T03"
+    },
+    "findings": [
+      {
+        "category": "T03",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-04",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T02"
+    },
+    "findings": [
+      {
+        "category": "T02",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-04",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T02"
+    },
+    "findings": [
+      {
+        "category": "T02",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-05",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T04"
+    },
+    "findings": [
+      {
+        "category": "T04",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-05",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T04"
+    },
+    "findings": [
+      {
+        "category": "T04",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-06",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T09"
+    },
+    "findings": [
+      {
+        "category": "T09",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-06",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T09"
+    },
+    "findings": [
+      {
+        "category": "T09",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-07",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T10"
+    },
+    "findings": [
+      {
+        "category": "T10",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-07",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T10"
+    },
+    "findings": [
+      {
+        "category": "T10",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-08",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T05"
+    },
+    "findings": [
+      {
+        "category": "T05",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-08",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T05"
+    },
+    "findings": [
+      {
+        "category": "T05",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-09",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T06"
+    },
+    "findings": [
+      {
+        "category": "T06",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-09",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T06"
+    },
+    "findings": [
+      {
+        "category": "T06",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-10",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T07"
+    },
+    "findings": [
+      {
+        "category": "T07",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-10",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T07"
+    },
+    "findings": [
+      {
+        "category": "T07",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-11",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T01"
+    },
+    "findings": [
+      {
+        "category": "T01",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-11",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T01"
+    },
+    "findings": [
+      {
+        "category": "T01",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-12",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T10"
+    },
+    "findings": [
+      {
+        "category": "T10",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-12",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T10"
+    },
+    "findings": [
+      {
+        "category": "T10",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-13",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T11"
+    },
+    "findings": [
+      {
+        "category": "T11",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-13",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T11"
+    },
+    "findings": [
+      {
+        "category": "T11",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-14",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T08"
+    },
+    "findings": [
+      {
+        "category": "T08",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-14",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T08"
+    },
+    "findings": [
+      {
+        "category": "T08",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-15",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T10"
+    },
+    "findings": [
+      {
+        "category": "T10",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-15",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T10"
+    },
+    "findings": [
+      {
+        "category": "T10",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-16",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T02"
+    },
+    "findings": [
+      {
+        "category": "T02",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-16",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T02"
+    },
+    "findings": [
+      {
+        "category": "T02",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-17",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T06"
+    },
+    "findings": [
+      {
+        "category": "T06",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-17",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T06"
+    },
+    "findings": [
+      {
+        "category": "T06",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-18",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T05"
+    },
+    "findings": [
+      {
+        "category": "T05",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-18",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T05"
+    },
+    "findings": [
+      {
+        "category": "T05",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-19",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T09"
+    },
+    "findings": [
+      {
+        "category": "T09",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-19",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T09"
+    },
+    "findings": [
+      {
+        "category": "T09",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-20",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T11"
+    },
+    "findings": [
+      {
+        "category": "T11",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R4_over_flagger",
+    "pair": "V3-20",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": true,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": true,
+      "matched_category": "T11"
+    },
+    "findings": [
+      {
+        "category": "T11",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run flags the matched category",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ]
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-01",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": true,
+    "distractor_findings": [
+      {
+        "category": "T02",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T02",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T12",
+      "emitted_category": "T02",
+      "forbidden_categories": [
+        "T12"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-01",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": true,
+    "distractor_findings": [
+      {
+        "category": "T02",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T02",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T12",
+      "emitted_category": "T02",
+      "forbidden_categories": [
+        "T12"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-02",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": true,
+    "distractor_findings": [
+      {
+        "category": "T10",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T10",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T04",
+      "emitted_category": "T10",
+      "forbidden_categories": [
+        "T04"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-02",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": true,
+    "distractor_findings": [
+      {
+        "category": "T10",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T10",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T04",
+      "emitted_category": "T10",
+      "forbidden_categories": [
+        "T04"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-03",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": true,
+    "distractor_findings": [
+      {
+        "category": "T10",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T10",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T03",
+      "emitted_category": "T10",
+      "forbidden_categories": [
+        "T03"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-03",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": true,
+    "distractor_findings": [
+      {
+        "category": "T10",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T10",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T03",
+      "emitted_category": "T10",
+      "forbidden_categories": [
+        "T03"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-04",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T07",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T02",
+      "emitted_category": "T07",
+      "forbidden_categories": [
+        "T02"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-04",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T07",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T02",
+      "emitted_category": "T07",
+      "forbidden_categories": [
+        "T02"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-05",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T10",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T04",
+      "emitted_category": "T10",
+      "forbidden_categories": [
+        "T04"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-05",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T10",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T04",
+      "emitted_category": "T10",
+      "forbidden_categories": [
+        "T04"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-06",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": true,
+    "distractor_findings": [
+      {
+        "category": "T12",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T12",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T09",
+      "emitted_category": "T12",
+      "forbidden_categories": [
+        "T09"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-06",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": true,
+    "distractor_findings": [
+      {
+        "category": "T12",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T12",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T09",
+      "emitted_category": "T12",
+      "forbidden_categories": [
+        "T09"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-07",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": true,
+    "distractor_findings": [
+      {
+        "category": "T12",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T12",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T10",
+      "emitted_category": "T12",
+      "forbidden_categories": [
+        "T10"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-07",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": true,
+    "distractor_findings": [
+      {
+        "category": "T12",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T12",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T10",
+      "emitted_category": "T12",
+      "forbidden_categories": [
+        "T10"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-08",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": true,
+    "distractor_findings": [
+      {
+        "category": "T09",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T09",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T05",
+      "emitted_category": "T09",
+      "forbidden_categories": [
+        "T05"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-08",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": true,
+    "distractor_findings": [
+      {
+        "category": "T09",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T09",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T05",
+      "emitted_category": "T09",
+      "forbidden_categories": [
+        "T05"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-09",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T09",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T06",
+      "emitted_category": "T09",
+      "forbidden_categories": [
+        "T06"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-09",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T09",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T06",
+      "emitted_category": "T09",
+      "forbidden_categories": [
+        "T06"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-10",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": true,
+    "distractor_findings": [
+      {
+        "category": "T11",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T11",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T07",
+      "emitted_category": "T11",
+      "forbidden_categories": [
+        "T07"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-10",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": true,
+    "distractor_findings": [
+      {
+        "category": "T11",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T11",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T07",
+      "emitted_category": "T11",
+      "forbidden_categories": [
+        "T07"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-11",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": true,
+    "distractor_findings": [
+      {
+        "category": "T04",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T04",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T01",
+      "emitted_category": "T04",
+      "forbidden_categories": [
+        "T01"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-11",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": true,
+    "distractor_findings": [
+      {
+        "category": "T04",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T04",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T01",
+      "emitted_category": "T04",
+      "forbidden_categories": [
+        "T01"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-12",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T12",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T10",
+      "emitted_category": "T12",
+      "forbidden_categories": [
+        "T10"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-12",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T12",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T10",
+      "emitted_category": "T12",
+      "forbidden_categories": [
+        "T10"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-13",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": true,
+    "distractor_findings": [
+      {
+        "category": "T02",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T02",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T11",
+      "emitted_category": "T02",
+      "forbidden_categories": [
+        "T11"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-13",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": true,
+    "distractor_findings": [
+      {
+        "category": "T02",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T02",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T11",
+      "emitted_category": "T02",
+      "forbidden_categories": [
+        "T11"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-14",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": true,
+    "distractor_findings": [
+      {
+        "category": "T05",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T05",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T08",
+      "emitted_category": "T05",
+      "forbidden_categories": [
+        "T08"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-14",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": true,
+    "distractor_findings": [
+      {
+        "category": "T05",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T05",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T08",
+      "emitted_category": "T05",
+      "forbidden_categories": [
+        "T08"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-15",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": true,
+    "distractor_findings": [
+      {
+        "category": "T12",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T12",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T10",
+      "emitted_category": "T12",
+      "forbidden_categories": [
+        "T10"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-15",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": true,
+    "distractor_findings": [
+      {
+        "category": "T12",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T12",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T10",
+      "emitted_category": "T12",
+      "forbidden_categories": [
+        "T10"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-16",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": true,
+    "distractor_findings": [
+      {
+        "category": "T07",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T07",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T02",
+      "emitted_category": "T07",
+      "forbidden_categories": [
+        "T02"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-16",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": true,
+    "distractor_findings": [
+      {
+        "category": "T07",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T07",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T02",
+      "emitted_category": "T07",
+      "forbidden_categories": [
+        "T02"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-17",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": true,
+    "distractor_findings": [
+      {
+        "category": "T09",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T09",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T06",
+      "emitted_category": "T09",
+      "forbidden_categories": [
+        "T06"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-17",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": true,
+    "distractor_findings": [
+      {
+        "category": "T09",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T09",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T06",
+      "emitted_category": "T09",
+      "forbidden_categories": [
+        "T06"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-18",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T09",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T05",
+      "emitted_category": "T09",
+      "forbidden_categories": [
+        "T05"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-18",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T09",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T05",
+      "emitted_category": "T09",
+      "forbidden_categories": [
+        "T05"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-19",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": true,
+    "distractor_findings": [
+      {
+        "category": "T12",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T12",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T09",
+      "emitted_category": "T12",
+      "forbidden_categories": [
+        "T09"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-19",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": true,
+    "distractor_findings": [
+      {
+        "category": "T12",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T12",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T09",
+      "emitted_category": "T12",
+      "forbidden_categories": [
+        "T09"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-20",
+    "variant": "case_fail",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T02",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T11",
+      "emitted_category": "T02",
+      "forbidden_categories": [
+        "T11"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  },
+  {
+    "reviewer": "R5_misattribution",
+    "pair": "V3-20",
+    "variant": "case_healthy",
+    "verdict": "FAIL",
+    "flagged": true,
+    "primary_match": false,
+    "secondary_match": false,
+    "secondary_findings": [],
+    "distractor_match": false,
+    "distractor_findings": [],
+    "judge": {
+      "match": false,
+      "matched_category": null
+    },
+    "findings": [
+      {
+        "category": "T02",
+        "severity": "HIGH",
+        "evidence": "dry-run deterministic evidence",
+        "finding": "dry-run identifies the base category before structural remapping",
+        "metric_that_proves_fix": "dry_run_metric = 0"
+      }
+    ],
+    "r5_misattribution": {
+      "identified_category": "T11",
+      "emitted_category": "T02",
+      "forbidden_categories": [
+        "T11"
+      ],
+      "map": {
+        "T01": "T04",
+        "T02": "T07",
+        "T03": "T10",
+        "T04": "T10",
+        "T05": "T09",
+        "T06": "T09",
+        "T07": "T11",
+        "T08": "T05",
+        "T09": "T12",
+        "T10": "T12",
+        "T11": "T02",
+        "T12": "T02"
+      }
+    }
+  }
+]
