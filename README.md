@@ -82,18 +82,35 @@ The claim that the recall/false-positive pairing actually discriminates good rev
 .
 ├── README.md                         # this file
 ├── docs/
-│   ├── article.md                    # position paper (related work + contribution + experiment)
+│   ├── papers/
+│   │   ├── position-paper.md         # CAA framework (genre: framework/position)
+│   │   ├── empirical-study.md        # calibration metric, pre-registered falsification (genre: empirical)
+│   │   └── meta-paper.md             # recursive gate-failure finding (genre: meta/reflective)
+│   ├── diagrams/
+│   │   ├── pipeline-v2.svg
+│   │   └── gate-vs-auditor.svg/png   # closed-predicate gate vs. open-model auditor
+│   ├── article.md                    # original position-paper draft (superseded by papers/position-paper.md)
 │   ├── pipeline-v2-diagram.svg
 │   └── pipeline-v2-diagram.png
 ├── spec/
 │   └── verdict-contract.schema.json  # the pluggable interface (JSON Schema)
 ├── experiments/
 │   ├── README.md
-│   ├── calibration-protocol-ptbr.md  # falsification protocol (PT-BR)
+│   ├── calibration-protocol-ptbr.md  # falsification protocol
 │   └── calib_experiment.py           # runnable skeleton (Anthropic API)
 ├── CITATION.cff
 └── LICENSE
 ```
+
+## The three papers
+
+The work splits into three contributions of distinct genres — kept as separate papers because forcing one structure onto another makes a sound contribution look broken:
+
+- **Position paper** (`docs/papers/position-paper.md`) — the CAA framework: AI reviewers as calibrated instruments, the verdict contract, the two-plane independence principle. Wrong if a simpler framing does the same work or the decomposition fails to cover a case it claims.
+- **Empirical study** (`docs/papers/empirical-study.md`) — a pre-registered falsification of the paired recall/false-positive metric across two independent corpora with real model calls. Demonstrated: FP-axis discrimination of contracted vs. naive vs. two degenerate controls, replicated. Undemonstrated: recall-axis discrimination (recall saturates on textual cases, reproducibly). Untested: confident-misattribution detection (the control resisted three construction attempts).
+- **Meta-paper** (`docs/papers/meta-paper.md`) — across five iterations an automated decision gate accepted a structurally defective result every time, and only independent human audit of raw data caught each one. Argued to be structural (a closed-predicate gate is complete only against anticipated failure), not an instance bug — a recursive demonstration of CAA's own independence premise.
+
+**Status of all three: draft v0.1, target arXiv preprint. Not yet submitted; every numeric claim is reconstructed from raw per-call records independently of the experiment harness.**
 
 ## Contributing / discussion
 

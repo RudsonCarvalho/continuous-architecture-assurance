@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 600" font-family="'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#18243A"/>
+    </marker>
+    <marker id="arRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#B23A2E"/>
+    </marker>
+    <marker id="arGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#157A3D"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="860" height="600" fill="#FBFBF8"/>
+
+  <text x="40" y="40" font-size="19" font-weight="700" fill="#18243A">Why a closed-predicate gate cannot police novel failure</text>
+  <text x="40" y="60" font-size="12.5" fill="#5B6878">The gate checks anticipated modes; the auditor evaluates against an open model of correctness.</text>
+
+  <!-- Process output -->
+  <rect x="40" y="92" width="180" height="86" rx="10" fill="#FFFFFF" stroke="#5B6B7F" stroke-width="1.5"/>
+  <rect x="40" y="92" width="6" height="86" rx="3" fill="#5B6B7F"/>
+  <text x="60" y="116" font-size="13" font-weight="700" fill="#18243A">Process output O</text>
+  <text x="60" y="136" font-size="11.5" fill="#3C4757">per-call records from an</text>
+  <text x="60" y="152" font-size="11.5" fill="#3C4757">evidence-producing process</text>
+  <text x="60" y="170" font-size="11" fill="#8A93A0">(run because correct ≠ known)</text>
+
+  <!-- three known-mode tokens + one novel -->
+  <g font-size="10.5" text-anchor="middle">
+    <circle cx="262" cy="110" r="13" fill="#DCE7F6" stroke="#9FB8E0"/><text x="262" y="114" fill="#22406E">c₁</text>
+    <circle cx="262" cy="142" r="13" fill="#DCE7F6" stroke="#9FB8E0"/><text x="262" y="146" fill="#22406E">c₂</text>
+    <circle cx="262" cy="174" r="13" fill="#DCE7F6" stroke="#9FB8E0"/><text x="262" y="178" fill="#22406E">c₃</text>
+    <path d="M 254 198 l 8 14 l 8 -14 z" fill="#F2D6D2" stroke="#C98B82"/><text x="262" y="210" fill="#B23A2E" font-size="9">new</text>
+  </g>
+  <line x1="220" y1="135" x2="246" y2="120" stroke="#18243A" stroke-width="1.3" marker-end="url(#ar)"/>
+  <line x1="220" y1="140" x2="246" y2="142" stroke="#18243A" stroke-width="1.3" marker-end="url(#ar)"/>
+  <line x1="220" y1="148" x2="246" y2="172" stroke="#18243A" stroke-width="1.3" marker-end="url(#ar)"/>
+  <line x1="220" y1="158" x2="248" y2="200" stroke="#B23A2E" stroke-width="1.3" marker-end="url(#arRed)"/>
+
+  <!-- THE GATE: a sieve with fixed holes -->
+  <rect x="312" y="92" width="230" height="220" rx="12" fill="#FFFFFF" stroke="#2456C9" stroke-width="1.6"/>
+  <text x="328" y="118" font-size="14" font-weight="700" fill="#2456C9">Automated gate G</text>
+  <text x="328" y="137" font-size="11.5" fill="#3C4757">predicates {c₁ … cₙ} — closed set</text>
+
+  <!-- sieve body -->
+  <rect x="340" y="152" width="174" height="92" rx="6" fill="#EEF3FD" stroke="#B9CCF2"/>
+  <text x="427" y="170" font-size="10.5" fill="#5B6878" text-anchor="middle">checks only anticipated modes</text>
+  <!-- holes = encoded predicates -->
+  <g>
+    <circle cx="370" cy="200" r="11" fill="#FBFBF8" stroke="#2456C9" stroke-width="1.4"/><text x="370" y="204" font-size="10" fill="#2456C9" text-anchor="middle">c₁</text>
+    <circle cx="408" cy="200" r="11" fill="#FBFBF8" stroke="#2456C9" stroke-width="1.4"/><text x="408" y="204" font-size="10" fill="#2456C9" text-anchor="middle">c₂</text>
+    <circle cx="446" cy="200" r="11" fill="#FBFBF8" stroke="#2456C9" stroke-width="1.4"/><text x="446" y="204" font-size="10" fill="#2456C9" text-anchor="middle">c₃</text>
+    <!-- no hole for the new mode: a solid patch -->
+    <rect x="474" y="190" width="22" height="22" rx="3" fill="#E4D2CE" stroke="#B23A2E" stroke-dasharray="3 2"/>
+    <text x="485" y="227" font-size="9" fill="#B23A2E" text-anchor="middle">no cₖ</text>
+  </g>
+
+  <!-- known modes pass through (caught) -->
+  <text x="427" y="266" font-size="11" fill="#157A3D" text-anchor="middle">anticipated defect → caught (reject)</text>
+  <!-- novel mode bounces to ACCEPT -->
+  <text x="427" y="284" font-size="11" fill="#B23A2E" text-anchor="middle">novel defect → no predicate → accept</text>
+  <text x="427" y="302" font-size="10.5" fill="#8A93A0" text-anchor="middle">accept is the assurance: no human looks</text>
+
+  <!-- ACCEPT path (the dangerous one) -->
+  <line x1="542" y1="200" x2="600" y2="200" stroke="#B23A2E" stroke-width="1.8" marker-end="url(#arRed)"/>
+  <rect x="602" y="178" width="150" height="44" rx="10" fill="#FBEDEB" stroke="#B23A2E" stroke-width="1.5"/>
+  <text x="677" y="198" font-size="12.5" font-weight="700" fill="#B23A2E" text-anchor="middle">ACCEPT</text>
+  <text x="677" y="214" font-size="10.5" fill="#8A4940" text-anchor="middle">defective O blessed as assured</text>
+
+  <!-- THE AUDITOR -->
+  <rect x="312" y="372" width="440" height="150" rx="12" fill="#FFFFFF" stroke="#157A3D" stroke-width="1.6"/>
+  <text x="328" y="398" font-size="14" font-weight="700" fill="#157A3D">Independent human auditor</text>
+  <text x="328" y="417" font-size="11.5" fill="#3C4757">evaluates O against an OPEN model of correctness: “does this make sense?”</text>
+
+  <!-- open eye / open set glyph -->
+  <ellipse cx="380" cy="470" rx="40" ry="26" fill="#E9F6EE" stroke="#157A3D" stroke-width="1.4"/>
+  <circle cx="380" cy="470" r="12" fill="#157A3D"/>
+  <circle cx="384" cy="466" r="4" fill="#E9F6EE"/>
+  <text x="380" y="512" font-size="10.5" fill="#14532D" text-anchor="middle">open set, not {c₁…cₙ}</text>
+
+  <text x="446" y="452" font-size="11.5" fill="#3C4757">recognizes a defect it did not pre-specify;</text>
+  <text x="446" y="470" font-size="11.5" fill="#3C4757">the novel mode is visible because the check</text>
+  <text x="446" y="488" font-size="11.5" fill="#3C4757">is open, reconstructed from raw records.</text>
+
+  <!-- novel defect routed to auditor and caught -->
+  <path d="M 488 214 C 300 320, 250 320, 300 440 L 322 452" fill="none" stroke="#B23A2E" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#arRed)"/>
+  <text x="296" y="338" font-size="10" fill="#B23A2E" text-anchor="middle">same novel O</text>
+
+  <!-- caught box -->
+  <rect x="602" y="448" width="150" height="44" rx="10" fill="#E9F6EE" stroke="#157A3D" stroke-width="1.5"/>
+  <text x="677" y="468" font-size="12.5" font-weight="700" fill="#157A3D" text-anchor="middle">CAUGHT</text>
+  <text x="677" y="484" font-size="10.5" fill="#1C5A33" text-anchor="middle">defect detected by audit</text>
+  <line x1="476" y1="476" x2="600" y2="472" stroke="#157A3D" stroke-width="1.4" marker-end="url(#arGreen)"/>
+
+  <!-- the asymmetry caption -->
+  <rect x="40" y="372" width="248" height="150" rx="10" fill="#FFFFFF" stroke="#B45309" stroke-width="1.4"/>
+  <rect x="40" y="372" width="6" height="150" rx="3" fill="#B45309"/>
+  <text x="60" y="396" font-size="12.5" font-weight="700" fill="#B45309">The asymmetry is representational</text>
+  <text x="60" y="418" font-size="11" fill="#3C4757">The gate is complete only against</text>
+  <text x="60" y="434" font-size="11" fill="#3C4757">the past — its encoded predicates.</text>
+  <text x="60" y="450" font-size="11" fill="#3C4757">The process generates the future —</text>
+  <text x="60" y="466" font-size="11" fill="#3C4757">outputs whose novelty is the point.</text>
+  <text x="60" y="488" font-size="11" fill="#3C4757">No predicate set covers what its</text>
+  <text x="60" y="504" font-size="11" fill="#3C4757">author did not anticipate.</text>
+
+  <text x="40" y="560" font-size="11" fill="#8A93A0">A counter-instance — an automated gate that catches genuinely novel defects — would need predicates for unanticipated modes,</text>
+  <text x="40" y="576" font-size="11" fill="#8A93A0">a contradiction unless the gate embeds an open reasoner, which is then itself a reviewer requiring its own assurance (the regress).</text>
+</svg>
