@@ -24,7 +24,25 @@ I built CAA as a framework, then spent five experimental iterations trying to fa
 
 If you are deciding whether something like CAA is worth adopting, the short version is: **yes, for AI-assisted review in domains where being confidently wrong is expensive — and the reason to trust it is precisely that I am telling you where it does not work.**
 
-The rest of this document explains the problem, the idea, how I measured it, the corpus, the full five-iteration saga with its dead ends, the verdict, and how you would actually start using this.
+The rest of this document explains the problem, the idea, how I measured it, the corpus, the full five-run saga with its dead ends, the verdict, and how you would actually start using this.
+
+---
+
+## Claims and evidence at a glance
+
+*The honest scorecard, before the narrative. Every number in this report is reconstructed from raw per-call records, independently of the experiment harness, with run provenance verified as real.*
+
+| Claim | Status | Evidence | Key limitation |
+|---|---|---|---|
+| Contract-bound review reduces false positives vs. naive review | **Demonstrated** | Two independent corpora, real model calls (FP 0.05 vs 0.25; 0.10 vs 0.55) | Controlled *textual* incident pairs, not live systems |
+| The paired recall/FP metric catches degenerate reviewers | **Demonstrated** | Over-flagger caught by FP; coverage-gap reviewer caught by recall | Degenerate controls are constructed, not naturally occurring |
+| Recall discriminates among *plausible* reviewers | **Not demonstrated** | Naive recall saturated (1.00) on both corpora | Textual cases appear too easy for a competent model to miss |
+| The metric catches a confident-misattribution reviewer | **Untested** | The control could not be constructed across three attempts | May require a real, not synthetic, misreasoning source |
+| An automated assurance gate is sufficient on its own | **Refuted / weakened** | The gate accepted a defect in all five runs; human audit caught each | Independent human audit remains required |
+
+The two demonstrated rows are the core result. The two "not demonstrated / untested" rows are honest gaps, each with a stated reason. The last row is the recursive finding — and, I will argue, the most important one.
+
+**Scope boundary, stated plainly:** this work does *not* establish that CAA detects architectural risk directly from production systems, codebases, telemetry, or live design artifacts. It establishes that a contract-bound reviewer can be calibrated against controlled textual incident pairs, and that doing so exposed concrete failure modes in both the reviewers and the assurance gate itself.
 
 ---
 
@@ -120,7 +138,7 @@ Before every run, I committed the decision criteria in writing — what would co
 
 ---
 
-## Part 5 — The saga: five iterations of trying to break it
+## Part 5 — The saga: five runs of trying to break it
 
 This is the part most reports would hide. I am putting it at the center, because the dead ends are the most valuable content here — each one is a live demonstration of how easily an AI-review process can fool you, and what it takes to catch it. If you are considering letting AI review your systems, read this part as a series of near-misses you would almost certainly have accepted.
 
@@ -163,9 +181,25 @@ The real run, finally clean. Both real reviewers and the structural controls beh
 
 **Lesson:** the failure mode most worth catching may be an emergent property of flawed reasoning, not something you can fake. That itself is a result.
 
-### The pattern across all five
+### The pattern across all five runs
 
-Look back at the five gate verdicts: *falsified, corroborated, inconclusive, corroborated, inconclusive.* In every single iteration, the automated gate accepted a structurally defective result — an overstated negative, an over-broad positive, a collapsed control, mock data as real, a structurally impossible score marked valid — and in every single iteration, only a human reading the raw records caught it. The gate caught what it was built to catch and passed every new kind of problem.
+A note on counting, because "five iterations" can sound like rhetorical accounting. These were not five symmetric versions of one experiment. They were **five distinct runs, each a real opportunity for the automated gate to catch a defect**: two initial iterations on independent corpora, one run whose control collapsed, one run that turned out to be contaminated mock data, and one final clean real run. What matters is not the count but the *heterogeneity* — the gate failed in a different way each time, which is precisely what a single recurring bug would not do.
+
+Look back at the five gate verdicts: *falsified, corroborated, inconclusive, corroborated, inconclusive.* In every run, the automated gate accepted a structurally defective result — an overstated negative, an over-broad positive, a collapsed control, mock data as real, a structurally impossible score marked valid — and in every run, only a human reading the raw records caught it. The gate caught what it was built to catch and passed every new kind of problem.
+
+### The numbers
+
+The two clean real runs, reconstructed from raw records (FP = false-positive rate on healthy twins; recall = correct-cause rate on failure cases; n = 20 matched pairs = 40 cases per reviewer per corpus):
+
+| Reviewer | Corpus A — recall | Corpus A — FP | Corpus B — recall | Corpus B — FP | Role |
+|---|---|---|---|---|---|
+| Contract (R2) | 1.00 | **0.05** | 1.00 | **0.10** | real reviewer |
+| Naive (R1) | 1.00 | 0.25 | 1.00 | 0.55 | real reviewer (baseline) |
+| Coverage-gap (R3) | 0.35 | 0.00 | 0.30 | 0.05 | degenerate control |
+| Over-flagger (R4) | 1.00 | 1.00 | 1.00 | 1.00 | degenerate control |
+| Misattribution (R5) | — | — | 0.00 | 0.00 | VOID (uninterpretable) |
+
+Read the table for the *shape*, not just the magnitudes. The contract reviewer beats the naive one entirely on false positives (0.05 vs 0.25, then 0.10 vs 0.55) — same direction, both corpora. The over-flagger has perfect recall but maximal FP: recall alone would crown it, the pair sinks it. The coverage-gap reviewer has near-perfect FP but low recall: FP alone would rank it best, the pair sinks it. That two different degenerates are caught by two *different* halves of the pair is the mechanism working — a single-axis fluke cannot produce it. And recall sits at 1.00 for every real reviewer on both corpora: the saturation that defines the limitation, reproduced.
 
 *(Diagram: `docs/diagrams/gate-vs-auditor.svg` — why a closed-rule gate cannot police a process whose novelty is the point.)*
 
@@ -181,13 +215,31 @@ Stated plainly, scoped exactly to what five iterations of real measurement suppo
 
 **Untested, and possibly hard to test:** detection of the confident-misattribution reviewer — the most dangerous real-world failure — because that reviewer resisted three attempts at construction.
 
-**And the meta-result, which is the strongest thing here:** across five hardened iterations the automated gate failed to catch a serious defect every time, and independent human audit caught every one. I argue this is *structural*, not a bug in my gate: an automated gate can only check the failure modes its author anticipated, while the entire point of running an evidence-producing process is that its output is not known in advance. The gate is complete only against the past; the process generates the future. This is a recursive demonstration of CAA's founding rule — the producer of evidence cannot be the one who assures it — produced by the very attempt to test something else.
+**And the meta-result, which is the strongest thing here:** across five hardened runs the automated gate failed to catch a serious defect every time, and independent human audit caught every one. The repeated, heterogeneous failures point to a structural limitation of closed-rule gates: they can enforce known criteria well, but they are weak at detecting *novel* defects in the evidence-production process — because a gate can only check the failure modes its author anticipated, while the whole point of running such a process is that its output is not known in advance. The gate is complete only against the past; the process generates the future. (The companion meta-paper makes the stronger, mechanism-level version of this argument and defends it against the "your gate was just misconfigured" objection.) Either way, this is a recursive demonstration of CAA's founding rule — the producer of evidence cannot be the one who assures it — produced by the very attempt to test something else.
 
 So: **does it work?** It works where I could test it, it honestly maps where it does not, and in failing to police itself automatically it proved its own central premise. For a framework whose entire pitch is "don't trust the reviewer, verify it," there is no more fitting result.
 
 ---
 
-## Part 7 — Is it worth it? When to use CAA, and when not
+## Part 7 — Threats to validity
+
+A report that argues "don't trust without calibrating" must be honest about its own limits. These are the real ones, not performative ones.
+
+**The cases are textual, not real systems.** This is the most important threat. The experiment measures whether models detect risks *described in prose*, not whether they review production systems, codebases, telemetry, or live design artifacts. The recall saturation is direct evidence of the gap: a model reading a description with the cause embedded *finds it* far more easily than it would diagnose a running system. Everything demonstrated here is demonstrated for controlled textual incident pairs; generalization to live artifacts is a hypothesis, not a result.
+
+**Corpus size and authorship.** n = 20 matched pairs per corpus — directional, not powered for strong statistics. I wrote the cases and assigned their ground-truth causes, so the corpus inherits my judgment; a second independent annotator would strengthen it. The effect direction is consistent and replicated across two corpora, but the magnitudes should be read as observations, not population estimates.
+
+**Unintended cues.** A failure case could leak its answer through wording rather than mechanism. I mitigated this with a "blind reader" test (no sentence may state the conclusion; no taxonomy label in the text) applied to every case — and it took three full rewrites to pass it, with the failures documented in the saga. Residual subtle cues cannot be ruled out entirely.
+
+**Single model family.** One reviewer model and one (distinct) judge model. The two-corpus replication establishes robustness *to the corpus*, not *to the model*. Whether the findings hold across model families is untested.
+
+**Constructed controls.** The degenerate reviewers are degenerate *by construction*. The study therefore demonstrates discrimination of *known structural* degeneracy (coverage gap, over-flagging), not detection of a subtly bad reviewer that arises naturally — which is exactly the capability the misattribution control failed to test.
+
+**The judge is itself a model.** Category-match scoring uses an LLM judge, which can err. Mitigated by using a judge model distinct from the reviewer and by independent raw-data reconstruction of every number, but not eliminated.
+
+Naming these does not weaken the contribution; it scopes it. The demonstrated results survive every threat above; the undemonstrated ones are undemonstrated *because* of threats I am stating rather than hiding.
+
+## Part 8 — Is it worth it? When to use CAA, and when not
 
 Honesty about fit is part of the value. CAA is not free — it adds an independent assurance plane, which is real overhead.
 
@@ -199,7 +251,7 @@ Honesty about fit is part of the value. CAA is not free — it adds an independe
 
 ---
 
-## Part 8 — Why this matters, and what it is worth
+## Part 9 — Why this matters, and what it is worth
 
 The deeper value of CAA is not the pipeline or the ten reviewers. It is the **contract** — the verdict schema, the origin rule, the paired metric. Everything else is a substitutable implementation behind that interface. Lay the stable interface, evolve the engines later. This is what makes CAA a *plumbing* layer that survives the churn of which model or which framework is fashionable this quarter.
 
