@@ -12,7 +12,7 @@
 
 **The idea.** Treat an AI reviewer not as an oracle but as an **instrument to be calibrated**, the way a metrology lab calibrates a measuring device against a known standard. The standard is real incidents: does the reviewer catch the risk that actually caused a real outage (recall), and does it avoid crying wolf on a healthy system (false-positive rate)? The two numbers must be read as a pair — either alone is gameable. CAA is *ruler-agnostic*: your existing frameworks and reviewers plug in as instruments, provided they agree to be calibrated and to emit findings under a structured contract. The one rule that cannot be broken: the party that assures cannot be the party that produces.
 
-**Does it work? The honest scorecard.** I built CAA and then spent five experimental runs trying to *falsify* it, not confirm it. All numbers below are reconstructed from raw records:
+**Does it work? The honest scorecard.** I built CAA and then spent five experimental attempts trying to *falsify* it, not confirm it. All numbers below are reconstructed from raw records:
 
 | Claim | Status |
 |---|---|
@@ -20,7 +20,7 @@
 | The paired recall/FP metric catches degenerate reviewers | **Demonstrated** |
 | Recall discriminates among *plausible* reviewers | **Not demonstrated** (recall saturates on textual cases) |
 | The metric catches a confident-misattribution reviewer | **Untested** (the control resisted three construction attempts) |
-| An automated assurance gate is sufficient on its own | **Refuted** (it failed in all five runs; only human audit caught each) |
+| A closed-rule automated assurance gate is sufficient on its own | **Refuted** (it failed in all five runs; only human audit caught each) |
 
 That last row is the most important finding, and it arrived sideways: the automated gate I built to police the experiment accepted a serious defect *every single time*, and only an independent human reading the raw data caught it. For a framework whose entire pitch is "don't trust the reviewer, verify it," there is no more fitting result — the experiment proved its own founding rule.
 
@@ -32,7 +32,7 @@ That last row is the most important finding, and it arrived sideways: the automa
 
 ### Go deeper
 
-- **Understand the whole program** — the problem, the concepts, the full five-run saga, the verdict, and how to adopt it: **`docs/technical-report.md`**
+- **Understand the whole program** — the problem, the concepts, the full five-attempt saga, the verdict, and how to adopt it: **`docs/technical-report.md`**
 - **The rigor** — three genre-separated papers (the framework, the pre-registered empirical study, the recursive gate-failure meta-paper): **`docs/papers/`**
 - **The code, the corpus, the raw data** — reproducible, every number reconstructable independently of the harness: this repository.
 

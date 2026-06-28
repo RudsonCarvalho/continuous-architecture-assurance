@@ -1,6 +1,6 @@
 # Continuous Architecture Assurance
 
-### Calibrating AI reviewers as instruments — a framework, an experiment, and what five iterations of trying to break it taught me
+### Calibrating AI reviewers as instruments — a framework, an experiment, and what five attempts to break it taught me
 
 **Rudson Carvalho** · Independent Researcher
 *Technical report · v0.1 · companion to the CAA position, empirical, and meta papers*
@@ -15,7 +15,7 @@ Software teams are starting to let AI review their architecture and code. The re
 
 The market is full of "rulers" for judging software quality: well-architected frameworks, maturity models, checklists, and now AI reviewers. What nobody sells is the thing that tells you whether a ruler measures what it claims. **Continuous Architecture Assurance (CAA) is that thing — the mechanism that calibrates the rulers.** It treats an AI reviewer not as an oracle to be trusted but as an *instrument to be calibrated*, the way a metrology lab calibrates a measuring device against a known standard. The standard, here, is real incidents: does the reviewer catch the risk that actually caused a real outage, and does it avoid crying wolf on a healthy system?
 
-I built CAA as a framework, then spent five experimental iterations trying to falsify its central claim instead of confirm it. The honest result:
+I built CAA as a framework, then spent five experimental attempts trying to falsify its central claim instead of confirm it. The honest result:
 
 - **It works on one axis, demonstrably and repeatably.** A reviewer working under a strict contract is measurably better than a naive one, and both are measurably better than deliberately broken reviewers — and this replicated across two independent sets of real incidents.
 - **It could not be shown to work on a second axis**, and I explain exactly why (a property of how language models read text, not a flaw I can patch).
@@ -24,7 +24,7 @@ I built CAA as a framework, then spent five experimental iterations trying to fa
 
 If you are deciding whether something like CAA is worth adopting, the short version is: **yes, for AI-assisted review in domains where being confidently wrong is expensive — and the reason to trust it is precisely that I am telling you where it does not work.**
 
-The rest of this document explains the problem, the idea, how I measured it, the corpus, the full five-run saga with its dead ends, the verdict, and how you would actually start using this.
+The rest of this document explains the problem, the idea, how I measured it, the corpus, the full five-attempt saga with its dead ends, the verdict, and how you would actually start using this.
 
 ---
 
@@ -38,7 +38,7 @@ The rest of this document explains the problem, the idea, how I measured it, the
 | The paired recall/FP metric catches degenerate reviewers | **Demonstrated** | Over-flagger caught by FP; coverage-gap reviewer caught by recall | Degenerate controls are constructed, not naturally occurring |
 | Recall discriminates among *plausible* reviewers | **Not demonstrated** | Naive recall saturated (1.00) on both corpora | Textual cases appear too easy for a competent model to miss |
 | The metric catches a confident-misattribution reviewer | **Untested** | The control could not be constructed across three attempts | May require a real, not synthetic, misreasoning source |
-| An automated assurance gate is sufficient on its own | **Refuted / weakened** | The gate accepted a defect in all five runs; human audit caught each | Independent human audit remains required |
+| A closed-rule automated assurance gate is sufficient on its own | **Refuted / weakened** | The gate accepted a defect in all five runs; human audit caught each | Independent human audit remains required |
 
 The two demonstrated rows are the core result. The two "not demonstrated / untested" rows are honest gaps, each with a stated reason. The last row is the recursive finding — and, I will argue, the most important one.
 
@@ -138,7 +138,7 @@ Before every run, I committed the decision criteria in writing — what would co
 
 ---
 
-## Part 5 — The saga: five runs of trying to break it
+## Part 5 — The saga: five attempts to break it
 
 This is the part most reports would hide. I am putting it at the center, because the dead ends are the most valuable content here — each one is a live demonstration of how easily an AI-review process can fool you, and what it takes to catch it. If you are considering letting AI review your systems, read this part as a series of near-misses you would almost certainly have accepted.
 
@@ -181,11 +181,11 @@ The real run, finally clean. Both real reviewers and the structural controls beh
 
 **Lesson:** the failure mode most worth catching may be an emergent property of flawed reasoning, not something you can fake. That itself is a result.
 
-### The pattern across all five runs
+### The pattern across all five attempts
 
 A note on counting, because "five iterations" can sound like rhetorical accounting. These were not five symmetric versions of one experiment. They were **five distinct runs, each a real opportunity for the automated gate to catch a defect**: two initial iterations on independent corpora, one run whose control collapsed, one run that turned out to be contaminated mock data, and one final clean real run. What matters is not the count but the *heterogeneity* — the gate failed in a different way each time, which is precisely what a single recurring bug would not do.
 
-Look back at the five gate verdicts: *falsified, corroborated, inconclusive, corroborated, inconclusive.* In every run, the automated gate accepted a structurally defective result — an overstated negative, an over-broad positive, a collapsed control, mock data as real, a structurally impossible score marked valid — and in every run, only a human reading the raw records caught it. The gate caught what it was built to catch and passed every new kind of problem.
+Look back at the five gate verdicts: *falsified, corroborated, inconclusive, corroborated, inconclusive.* In every attempt, the automated gate accepted a structurally defective result — an overstated negative, an over-broad positive, a collapsed control, mock data as real, a structurally impossible score marked valid — and in every attempt, only a human reading the raw records caught it. The gate caught what it was built to catch and passed every new kind of problem.
 
 ### The numbers
 
@@ -207,7 +207,7 @@ Read the table for the *shape*, not just the magnitudes. The contract reviewer b
 
 ## Part 6 — Does it work? The honest verdict
 
-Stated plainly, scoped exactly to what five iterations of real measurement support:
+Stated plainly, scoped exactly to what five experimental attempts support:
 
 **Demonstrated, and replicated across two independent corpora with real model calls:** the paired recall / false-positive metric separates a contract-bound reviewer from a naive one, and separates both from a coverage-gap degenerate and an over-flagging degenerate. Neither number alone does this — the over-flagger is caught only by false positives, the blinded reviewer only by recall. The pairing is the mechanism, and it held.
 
@@ -215,7 +215,7 @@ Stated plainly, scoped exactly to what five iterations of real measurement suppo
 
 **Untested, and possibly hard to test:** detection of the confident-misattribution reviewer — the most dangerous real-world failure — because that reviewer resisted three attempts at construction.
 
-**And the meta-result, which is the strongest thing here:** across five hardened runs the automated gate failed to catch a serious defect every time, and independent human audit caught every one. The repeated, heterogeneous failures point to a structural limitation of closed-rule gates: they can enforce known criteria well, but they are weak at detecting *novel* defects in the evidence-production process — because a gate can only check the failure modes its author anticipated, while the whole point of running such a process is that its output is not known in advance. The gate is complete only against the past; the process generates the future. (The companion meta-paper makes the stronger, mechanism-level version of this argument and defends it against the "your gate was just misconfigured" objection.) Either way, this is a recursive demonstration of CAA's founding rule — the producer of evidence cannot be the one who assures it — produced by the very attempt to test something else.
+**And the meta-result, which is the strongest thing here:** across five hardened attempts the automated gate failed to catch a serious defect every time, and independent human audit caught every one. The repeated, heterogeneous failures point to a structural limitation of closed-rule gates: they can enforce known criteria well, but they are weak at detecting *novel* defects in the evidence-production process — because a gate can only check the failure modes its author anticipated, while the whole point of running such a process is that its output is not known in advance. The gate is complete only against the past; the process generates the future. (The companion meta-paper makes the stronger, mechanism-level version of this argument and defends it against the "your gate was just misconfigured" objection.) Either way, this is a recursive demonstration of CAA's founding rule — the producer of evidence cannot be the one who assures it — produced by the very attempt to test something else.
 
 So: **does it work?** It works where I could test it, it honestly maps where it does not, and in failing to police itself automatically it proved its own central premise. For a framework whose entire pitch is "don't trust the reviewer, verify it," there is no more fitting result.
 
@@ -271,6 +271,6 @@ This report is the readable overview. The rigorous detail lives in three genre-s
 - **Verdict contract** (`spec/verdict-contract.schema.json`) — the pluggable interface.
 - **Experiment** (`experiments/`) — the protocol and runnable harness; every numeric claim in this report is reconstructable from the raw per-call records, independently of the harness, with run provenance verified as real.
 
-*All results stated as of the five iterations completed for v0.1. This is a pilot program, honestly scoped, not a finished product — which is exactly what the framework would require me to say.*
+*All results stated as of the five attempts completed for v0.1. This is a pilot program, honestly scoped, not a finished product — which is exactly what the framework would require me to say.*
 
 — *Rudson Carvalho, Independent Researcher*
