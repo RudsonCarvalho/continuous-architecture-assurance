@@ -13,6 +13,10 @@
 
 Everyone is building rulers to evaluate architecture — well-architected frameworks, maturity models, checklists, and now AI reviewers. **CAA is the machine that calibrates the rulers.**
 
+## New here?
+
+Start by reading level. For the one-page executive summary and honest scorecard, see [`docs/overview.md`](./docs/overview.md). For the full narrative with embedded diagrams, see [`docs/technical-report.md`](./docs/technical-report.md) (also available as [`pdf/CAA-technical-report.pdf`](./pdf/CAA-technical-report.pdf)). For the rigor, see the three papers in [`docs/papers/`](./docs/papers/).
+
 ## The problem
 
 As AI reviewers enter the software design loop, the standard pattern is a swarm of specialized "reviewers" (security, data, capacity…) that each emit pages of feedback before you ship. In practice this becomes **checklist theater**: free-form prose nobody arbitrates, built on scenarios the model may have invented, with the reviewers treated as oracles.
