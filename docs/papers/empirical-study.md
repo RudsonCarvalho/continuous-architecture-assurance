@@ -35,7 +35,7 @@ Pre-registration was committed before each run. This is the defense against HARK
 
 ## 5. Methodology
 
-**Corpus.** 20 matched pairs derived from named public postmortems (AWS Kinesis 2020, GitHub October 2018, Cloudflare July 2019, CircleCI, Mozilla, Twilio, Val Town, and others via the `danluu/post-mortems` collection), root causes spanning all 12 categories, each with a recorded distractor category. Cases are blinded against memorization (fictional names, swapped domains) and were human-audited in two rounds; a leak test (no sentence may state the conclusion; no taxonomy codes in text) was applied to every failure case.
+**Corpus.** 20 matched pairs derived from named public postmortems (AWS Kinesis 2020, GitHub October 2018, Cloudflare July 2019, CircleCI, Mozilla, Twilio, Val Town, and others via the `danluu/post-mortems` collection), root causes spanning all 12 categories, each with a recorded distractor category. Cases are blinded against memorization (fictional names, swapped domains) and were human-audited in two rounds; a leak test (no sentence may state the conclusion; no taxonomy codes in text) was applied to every failure case. The full taxonomy, per-pair provenance, construction method, and blinding protocol are documented in the corpus datasheet (`docs/corpus-datasheet.md`).
 
 **Models (pinned for reproducibility).** Reviewer: `claude-sonnet-4-6`. Judge: `claude-haiku-4-5`. Reviewer and judge models are distinct and logged per call. Decoding and run parameters accompany the repository.
 

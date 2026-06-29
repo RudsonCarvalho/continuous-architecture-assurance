@@ -130,7 +130,7 @@ I could not calibrate against opinions, so I calibrated against reality: public 
 - a **failure case** — the pre-incident architecture, with the real causal mechanism present but *not named*;
 - a **healthy twin** — the identical architecture with the mitigation in place.
 
-The pair is the experimental control. Because the twins differ only by the mitigation, any difference in the reviewer's verdict between them isolates its ability to discriminate the *risk* from everything else — writing style, domain, length. Cases were blinded against memorization (fictional names, swapped domains), and every failure case passed a "blind reader" test: no sentence may state the conclusion, and no taxonomy label may appear in the text. (Getting this right took three rewrites — see the saga.)
+The pair is the experimental control. Because the twins differ only by the mitigation, any difference in the reviewer's verdict between them isolates its ability to discriminate the *risk* from everything else — writing style, domain, length. Cases were blinded against memorization (fictional names, swapped domains), and every failure case passed a "blind reader" test: no sentence may state the conclusion, and no taxonomy label may appear in the text. (Getting this right took three rewrites — see the saga.) If you want to see exactly which real incidents became which cases, the 12-category taxonomy, and how each pair was built and blinded, the corpus datasheet (`docs/corpus-datasheet.md`) documents all of it with per-pair provenance.
 
 ### 4.3 Pre-registration: the defense against fooling myself
 

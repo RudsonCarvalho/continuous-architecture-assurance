@@ -116,10 +116,12 @@ The work splits into three contributions of distinct genres — kept as separate
 
 **Status of all three: draft v0.1, target arXiv preprint. Not yet submitted; every numeric claim is reconstructed from raw per-call records independently of the experiment harness.**
 
+**Supporting the empirical study:** [`docs/corpus-datasheet.md`](./docs/corpus-datasheet.md) documents *what the reviewers were calibrated against* — the 12-category root-cause taxonomy, per-pair provenance tracing each case to a public incident (AWS, GitHub, Cloudflare, Twilio, Mozilla, Val Town, and others), the matched-pair construction method, the distractor design, and the anti-leak blinding protocol. Read this to understand the standard the reviewers were measured against.
+
 ## Contributing / discussion
 
 This is an open proposal. Issues and discussion are welcome — especially counter-examples, prior art in the empty intersection above, and incident corpora that could harden Layer 4. If you find published work that already occupies this exact space, that is the most valuable contribution you can make.
 
 ## Related work
 
-See [`docs/article.md`](./docs/article.md) for the full positioning against Dynamic Safety Cases (Denney & Pai), the Evidential Tool Bus, ACCESS, Assurance 2.0, and the 2024–2025 LLM-assurance-case literature.
+See [`archive/article-superseded.md`](./archive/article-superseded.md) and the position paper for the full positioning against Dynamic Safety Cases (Denney & Pai), the Evidential Tool Bus, ACCESS, Assurance 2.0, and the 2024–2025 LLM-assurance-case literature.
