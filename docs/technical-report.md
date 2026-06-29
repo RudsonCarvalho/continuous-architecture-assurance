@@ -233,6 +233,8 @@ A report that argues "don't trust without calibrating" must be honest about its 
 
 **Single model family.** One reviewer model and one (distinct) judge model. The two-corpus replication establishes robustness *to the corpus*, not *to the model*. Whether the findings hold across model families is untested.
 
+**Language.** The whole experiment — cases, reviewer prompts, judge, and outputs — ran in Brazilian Portuguese; this report presents it in English. Generalization to other languages is untested, and the recall-saturation result especially could differ in another language. The raw records in the repository are kept in their original Portuguese rather than translated, so the artifact reflects exactly what was run.
+
 **Constructed controls.** The degenerate reviewers are degenerate *by construction*. The study therefore demonstrates discrimination of *known structural* degeneracy (coverage gap, over-flagging), not detection of a subtly bad reviewer that arises naturally — which is exactly the capability the misattribution control failed to test.
 
 **The judge is itself a model.** Category-match scoring uses an LLM judge, which can err. Mitigated by using a judge model distinct from the reviewer and by independent raw-data reconstruction of every number, but not eliminated.

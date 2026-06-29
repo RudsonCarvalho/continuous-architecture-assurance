@@ -24,7 +24,7 @@
 
 That last row is the most important finding, and it arrived sideways: the automated gate I built to police the experiment accepted a serious defect *every single time*, and only an independent human reading the raw data caught it. For a framework whose entire pitch is "don't trust the reviewer, verify it," there is no more fitting result — the experiment proved its own founding rule.
 
-**Scope, stated plainly.** This is a pilot. It establishes that a contract-bound reviewer can be calibrated against controlled *textual* incident pairs — not that CAA detects risk directly from live production systems, codebases, or telemetry. The honesty about where it does *not* work is the reason to trust where it does.
+**Scope, stated plainly.** This is a pilot. It establishes that a contract-bound reviewer can be calibrated against controlled *textual* incident pairs — not that CAA detects risk directly from live production systems, codebases, or telemetry. The experiment ran in Brazilian Portuguese (artifacts preserved in the original language); cross-language generalization is untested. The honesty about where it does *not* work is the reason to trust where it does.
 
 **When it is worth it.** Use CAA where AI participates in reviewing or operating systems and being *confidently wrong* is expensive — regulated, financial, high-stakes domains. Skip it where the stakes don't justify the overhead. Minimum adoption: plug *one* reviewer under contract into a process you already have, make it emit a structured verdict with traceable evidence, and measure it against a handful of your own real incidents.
 

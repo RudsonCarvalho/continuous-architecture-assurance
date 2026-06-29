@@ -89,7 +89,7 @@ The audit was **mechanically reproducible**: every human verdict was a reconstru
 ### 5.4 Construct and external validity
 
 - **Construct:** "gate failure" is operationalized as "accepted an output a competent auditor rejected." This presumes the auditor's rejections were correct; each is defended by raw-data reconstruction in the companion empirical paper, but the construct does inherit the auditor's judgment.
-- **External:** one author, one experimental domain (reviewer calibration), one family of gates (pre-registered criteria over LLM-reviewer scores). The class-claim's reach beyond this is argued a priori, not demonstrated across domains. We claim the mechanism generalizes; we do not claim to have *shown* it generalizes. n is five iterations, not a powered sample — the contribution is the consistency and heterogeneity of failure plus the mechanism, not an effect size.
+- **External:** one author, one experimental domain (reviewer calibration), one family of gates (pre-registered criteria over LLM-reviewer scores). The class-claim's reach beyond this is argued a priori, not demonstrated across domains. We claim the mechanism generalizes; we do not claim to have *shown* it generalizes. n is five iterations, not a powered sample — the contribution is the consistency and heterogeneity of failure plus the mechanism, not an effect size. The underlying experiment ran in Brazilian Portuguese (artifacts preserved in the original language); the gate-failure finding concerns the gate's structure rather than the case language, but cross-language generalization is likewise not demonstrated.
 
 ## 6. The reflexive twist, named directly
 

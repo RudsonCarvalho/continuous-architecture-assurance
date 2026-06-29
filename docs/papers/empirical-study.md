@@ -75,6 +75,8 @@ What the results do **not** prove: that the metric discriminates on recall (the 
 
 **External.** One author, one domain, one reviewer/judge model family, n = 20 pairs. Directional, not powered for strong statistics; effect sizes are reported as observed, not as population estimates. The two-corpus replication establishes robustness *to the corpus*, not robustness to the model or across annotators — both corpora used the same reviewer/judge pair and the same author. Degenerate controls are degenerate-*by-construction*, so the study demonstrates discrimination of known structural degeneracy, not detection of a subtly bad reviewer no one knows how to build.
 
+**Language.** The corpus cases, the reviewer prompts, the judge, and the per-call outputs were all in Brazilian Portuguese; this paper reports them in English. Generalization to other languages is untested, and the recall-saturation finding in particular could behave differently in another language, since how readily a model recovers an embedded cause may be language-dependent. The raw records in the repository are preserved in their original Portuguese rather than translated, so the artifact reflects exactly what was run.
+
 **The negative results are findings, not failures.** "Textual cases cannot stress the recall axis for a competent LLM reader" and "a confident-misattribution reviewer resists synthetic construction across persona and structural methods" are transferable claims a future calibration effort can build on rather than rediscover.
 
 ## 9. Related work
