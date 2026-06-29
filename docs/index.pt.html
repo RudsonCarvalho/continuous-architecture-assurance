@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CAA — explicação ponta a ponta</title>
+<style>
+  :root{
+    --paper:#f7f6f2; --ink:#1b2733; --soft:#5a6675; --faint:#8b95a1;
+    --instrument:#2456c9; --instrument-d:#16367e; --alert:#b23a2e; --measure:#157a3d;
+    --amber:#b45309; --line:#e2e0d8; --card:#ffffff;
+    --blue-wash:#eef3fd; --green-wash:#e9f6ee; --red-wash:#fbedeb; --amber-wash:#fbf3e6;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Georgia,serif;
+    font-size:18px; line-height:1.62; -webkit-font-smoothing:antialiased;
+  }
+  .mono{font-family:"SF Mono",ui-monospace,"Cascadia Code",Consolas,monospace;}
+  .wrap{max-width:820px; margin:0 auto; padding:0 24px;}
+
+
+  .langbar{position:sticky; top:0; z-index:10; background:rgba(15,29,51,.96);
+    backdrop-filter:blur(6px); border-bottom:1px solid rgba(255,255,255,.08);}
+  .langbar .inner{max-width:820px; margin:0 auto; padding:8px 24px; display:flex;
+    align-items:center; justify-content:space-between;}
+  .langbar .name{font-family:"SF Mono",monospace; font-size:12px; letter-spacing:1.5px;
+    color:#9fc0ea; text-transform:uppercase;}
+  .langbar .links a{font-family:"SF Mono",monospace; font-size:12px; color:#cdddf2;
+    text-decoration:none; padding:4px 12px; border-radius:16px; margin-left:6px;}
+  .langbar .links a.active{background:#2456c9; color:#fff;}
+  .langbar .links a:not(.active):hover{background:rgba(255,255,255,.1);}
+
+  /* ---- masthead ---- */
+  header.top{
+    background:linear-gradient(158deg,#0f1d33,#1b3766 60%,#214480);
+    color:#fff; padding:64px 0 56px;
+  }
+  header.top .eyebrow{
+    font-family:"SF Mono",ui-monospace,monospace; letter-spacing:3px;
+    text-transform:uppercase; font-size:12px; color:#9fc0ea; margin:0 0 18px;
+  }
+  header.top h1{
+    font-size:40px; line-height:1.1; margin:0 0 16px; letter-spacing:-0.5px; font-weight:700;
+  }
+  header.top .lede{font-size:19px; color:#d4e2f5; max-width:62ch; font-weight:400;}
+  header.top .thesis{
+    margin-top:30px; padding:16px 22px; border-left:3px solid #4f86d6;
+    background:rgba(255,255,255,.06); border-radius:0 8px 8px 0;
+    font-size:18px; color:#eaf2fc; font-style:italic;
+  }
+  header.top .meta{margin-top:26px; font-size:14px; color:#9fc0ea;}
+  header.top .meta b{color:#fff;}
+
+  /* ---- table of contents ---- */
+  nav.toc{background:var(--card); border:1px solid var(--line); border-radius:12px;
+    padding:22px 26px; margin:-28px auto 0; position:relative; box-shadow:0 6px 24px rgba(20,35,58,.06);}
+  nav.toc h2{font-size:13px; text-transform:uppercase; letter-spacing:1.5px; color:var(--faint);
+    margin:0 0 12px; font-family:"SF Mono",monospace;}
+  nav.toc ol{margin:0; padding:0; list-style:none; counter-reset:toc; columns:2; column-gap:32px;}
+  nav.toc li{counter-increment:toc; margin:0 0 9px; font-size:15.5px; break-inside:avoid;}
+  nav.toc li::before{content:counter(toc,decimal-leading-zero); font-family:"SF Mono",monospace;
+    color:var(--instrument); font-size:12px; margin-right:10px; font-weight:600;}
+  nav.toc a{color:var(--ink); text-decoration:none;}
+  nav.toc a:hover{color:var(--instrument); text-decoration:underline;}
+
+  main{padding:50px 0 80px;}
+  section{margin:0 0 56px;}
+  .num{font-family:"SF Mono",monospace; font-size:13px; color:var(--instrument);
+    letter-spacing:1px; font-weight:600; display:block; margin-bottom:6px;}
+  h2.head{font-size:28px; line-height:1.18; margin:0 0 8px; letter-spacing:-0.3px;}
+  h3{font-size:20px; margin:28px 0 6px; color:var(--instrument-d);}
+  p{margin:0 0 16px;}
+  .soft{color:var(--soft);}
+  strong{color:var(--ink);}
+
+  /* acronym gloss */
+  .gloss{font-family:"SF Mono",monospace; font-size:.82em; color:var(--instrument-d);
+    background:var(--blue-wash); padding:1px 6px; border-radius:4px; white-space:nowrap;}
+
+  /* callout cards */
+  .card{background:var(--card); border:1px solid var(--line); border-radius:12px;
+    padding:22px 26px; margin:22px 0;}
+  .card.key{border-left:4px solid var(--instrument); background:var(--blue-wash);}
+  .card.win{border-left:4px solid var(--measure); background:var(--green-wash);}
+  .card.fail{border-left:4px solid var(--alert); background:var(--red-wash);}
+  .card.note{border-left:4px solid var(--amber); background:var(--amber-wash);}
+  .card .tag{font-family:"SF Mono",monospace; font-size:11px; letter-spacing:1.5px;
+    text-transform:uppercase; font-weight:700; display:block; margin-bottom:8px;}
+  .card.key .tag{color:var(--instrument);}
+  .card.win .tag{color:var(--measure);}
+  .card.fail .tag{color:var(--alert);}
+  .card.note .tag{color:var(--amber);}
+  .card p:last-child{margin-bottom:0;}
+
+  /* analogy aside */
+  .analogy{font-style:italic; color:var(--soft); border-top:1px dashed var(--line);
+    border-bottom:1px dashed var(--line); padding:14px 0; margin:20px 0;}
+  .analogy b{font-style:normal; color:var(--instrument-d);}
+
+  figure{margin:28px 0; text-align:center;}
+  figure svg{max-width:100%; height:auto;}
+  figcaption{font-size:14px; color:var(--faint); margin-top:10px; font-style:italic;}
+
+  /* the saga timeline */
+  .run{display:grid; grid-template-columns:54px 1fr; gap:18px; margin:0 0 8px;
+    padding:18px 0; border-top:1px solid var(--line);}
+  .run .badge{font-family:"SF Mono",monospace; font-weight:700; font-size:13px;
+    color:#fff; background:var(--instrument-d); border-radius:8px; height:38px;
+    display:flex; align-items:center; justify-content:center;}
+  .run.r1 .badge{background:#6b7686;} .run.r2 .badge{background:var(--measure);}
+  .run.r3 .badge{background:var(--amber);} .run.r4 .badge{background:var(--alert);}
+  .run.r5 .badge{background:var(--instrument-d);}
+  .run h4{margin:0 0 4px; font-size:18px;}
+  .run .verdict{font-family:"SF Mono",monospace; font-size:12px; color:var(--faint);
+    text-transform:uppercase; letter-spacing:1px;}
+  .run p{margin:8px 0 0; font-size:16.5px;}
+
+  table.scores{width:100%; border-collapse:collapse; margin:22px 0; font-size:15px;}
+  table.scores caption{text-align:left; color:var(--faint); font-size:14px; margin-bottom:8px; font-style:italic;}
+  table.scores th{background:var(--instrument-d); color:#fff; padding:9px 12px; text-align:left; font-weight:600; font-size:14px;}
+  table.scores td{padding:9px 12px; border-bottom:1px solid var(--line); font-family:"SF Mono",monospace; font-size:14px;}
+  table.scores td:first-child{font-family:inherit;}
+  table.scores tr:nth-child(even) td{background:#faf9f6;}
+  .pill{font-family:"SF Mono",monospace; font-size:11px; padding:2px 8px; border-radius:20px; font-weight:700; letter-spacing:.5px;}
+  .pill.d{background:var(--green-wash); color:var(--measure);}
+  .pill.n{background:var(--amber-wash); color:var(--amber);}
+  .pill.u{background:#eee; color:var(--soft);}
+  .pill.r{background:var(--red-wash); color:var(--alert);}
+
+  hr.div{border:none; border-top:1px solid var(--line); margin:48px 0;}
+  footer{border-top:1px solid var(--line); padding:34px 0 60px; color:var(--faint); font-size:14px;}
+  footer b{color:var(--soft);}
+  a.link{color:var(--instrument); text-decoration:none; border-bottom:1px solid #bcd0f4;}
+
+  @media (max-width:680px){
+    header.top h1{font-size:30px;} nav.toc ol{columns:1;} body{font-size:17px;}
+    .run{grid-template-columns:44px 1fr; gap:12px;}
+  }
+  @media (prefers-reduced-motion:no-preference){
+    section{opacity:0; transform:translateY(8px); animation:rise .5s ease forwards;}
+    @keyframes rise{to{opacity:1; transform:none;}}
+  }
+</style>
+</head>
+<body>
+
+<div class="langbar"><div class="inner">
+  <span class="name">CAA · explainer</span>
+  <span class="links"><a href="index.html">EN</a><a href="index.pt.html" class="active">PT</a></span>
+</div></div>
+
+<header class="top">
+  <div class="wrap">
+    <p class="eyebrow">Continuous Architecture Assurance · explicação ponta a ponta</p>
+    <h1>O que a gente construiu, e por quê</h1>
+    <p class="lede">Um guia didático do projeto inteiro — do problema à conclusão — escrito para
+    reconstruir a história toda quando os detalhes se perdem no meio do caminho.</p>
+    <div class="thesis">O CAA <span class="gloss">CAA = Continuous Architecture Assurance</span>
+    não revisa a sua arquitetura. Ele mede se quem revisa a sua arquitetura merece confiança.</div>
+    <p class="meta"><b>Rudson Carvalho</b> · Independent Researcher · versão didática v1</p>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="toc">
+  <h2>O caminho inteiro</h2>
+  <ol>
+    <li><a href="#problema">O problema que motivou tudo</a></li>
+    <li><a href="#ideia">A ideia: revisor como instrumento</a></li>
+    <li><a href="#planos">Os dois planos e a regra de ouro</a></li>
+    <li><a href="#medir">Como a gente mede um revisor</a></li>
+    <li><a href="#corpus">Contra o que medimos (o corpus)</a></li>
+    <li><a href="#saga">A saga: cinco tentativas de quebrar</a></li>
+    <li><a href="#meta">A descoberta que veio de lado</a></li>
+    <li><a href="#veredito">O veredito honesto</a></li>
+    <li><a href="#glossario">Glossário de todas as siglas</a></li>
+  </ol>
+</nav>
+</div>
+
+<main class="wrap">
+
+  <!-- 1 -->
+  <section id="problema">
+    <span class="num">01</span>
+    <h2 class="head">O problema que motivou tudo</h2>
+    <p>Estamos começando a deixar a IA <span class="gloss">IA = Inteligência Artificial</span>
+    revisar nossas decisões de arquitetura e de código. Quando um revisor de IA diz "esse desenho
+    tem risco de tempestade de retentativas", o que acontece em seguida? Na maioria dos times, uma
+    de duas coisas: ou confiam e agem, ou ignoram como ruído. <strong>As duas são falhas do mesmo
+    tipo</strong> — nenhuma se baseia em uma <em>medição</em> de quão confiável aquele revisor é,
+    naquele tipo de problema.</p>
+    <div class="analogy">
+      <b>A analogia central.</b> A gente nunca aceitaria isso de um instrumento físico. Um termômetro
+      que nunca foi calibrado não é um termômetro — é uma opinião com um número em cima. Mas a gente
+      instala revisores de IA, que são muito menos estáveis que termômetros, e aceita a leitura deles
+      na fé.
+    </div>
+    <p>E "colocar mais revisores" não resolve. Vira o que eu chamo de <strong>teatro de checklist</strong>:
+    um volume de feedback que soa plausível, que ninguém arbitra, frequentemente construído sobre
+    cenários de falha que o modelo simplesmente inventou — aceito porque os revisores são
+    <em>presumidos</em> competentes. Dez instrumentos não confiáveis não somam um confiável. Somam
+    mais ruído com quórum.</p>
+    <div class="card key">
+      <span class="tag">A pergunta real</span>
+      <p>Não é "como conseguir mais revisão de IA?". É: <strong>quando uma IA participa de julgar
+      se um sistema é sólido, o que assegura o juiz?</strong> Hoje, a resposta honesta na maioria
+      das organizações é silêncio, ou confiança no fornecedor.</p>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section id="ideia">
+    <span class="num">02</span>
+    <h2 class="head">A ideia: tratar o revisor como instrumento</h2>
+    <p>O movimento no coração do CAA é parar de tratar revisores de IA como <strong>oráculos</strong>
+    (fontes que se acredita por autoridade) e começar a tratá-los como <strong>instrumentos que
+    precisam ser calibrados</strong>. Essa única reformulação importa um século de prática madura da
+    metrologia <span class="gloss">metrologia = a ciência da medição e da calibração</span>.</p>
+
+    <figure>
+      <svg viewBox="0 0 720 250" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,sans-serif">
+        <rect x="0" y="0" width="720" height="250" fill="#ffffff"/>
+        <text x="20" y="30" font-size="14" font-weight="700" fill="#16367e">A mesma lógica, dois mundos</text>
+        <!-- metrology col -->
+        <rect x="20" y="50" width="320" height="180" rx="10" fill="#eef3fd" stroke="#b9ccf2"/>
+        <text x="40" y="76" font-size="13" font-weight="700" fill="#2456c9">METROLOGIA</text>
+        <text x="40" y="104" font-size="12.5" fill="#1b2733">O instrumento (ex.: termômetro)</text>
+        <text x="40" y="128" font-size="12.5" fill="#1b2733">Calibração contra um padrão</text>
+        <text x="40" y="152" font-size="12.5" fill="#1b2733">Incerteza de medição declarada</text>
+        <text x="40" y="176" font-size="12.5" fill="#1b2733">Rastreabilidade da medida</text>
+        <text x="40" y="200" font-size="12.5" fill="#1b2733">Cadeia de custódia</text>
+        <!-- CAA col -->
+        <rect x="380" y="50" width="320" height="180" rx="10" fill="#e9f6ee" stroke="#9ed4b3"/>
+        <text x="400" y="76" font-size="13" font-weight="700" fill="#157a3d">CAA</text>
+        <text x="400" y="104" font-size="12.5" fill="#1b2733">O revisor de IA (ou qualquer "régua")</text>
+        <text x="400" y="128" font-size="12.5" fill="#1b2733">Medir contra incidentes reais</text>
+        <text x="400" y="152" font-size="12.5" fill="#1b2733">Risco residual que aceitamos</text>
+        <text x="400" y="176" font-size="12.5" fill="#1b2733">Todo achado cita uma origem</text>
+        <text x="400" y="200" font-size="12.5" fill="#1b2733">Contrato + trilha de auditoria</text>
+        <!-- arrow -->
+        <path d="M345 140 L375 140" stroke="#8b95a1" stroke-width="2" marker-end="url(#a)"/>
+        <defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8b95a1"/></marker></defs>
+      </svg>
+      <figcaption>A reformulação que dá ao CAA uma posição própria: ele não é mais uma régua, é o que calibra as réguas.</figcaption>
+    </figure>
+
+    <p>A consequência que torna isso poderoso: o CAA é <strong>agnóstico de régua</strong>. Ele não
+    compete com o seu framework de boas práticas, seu modelo de maturidade ou seus revisores de IA —
+    qualquer um deles entra como instrumento, <em>desde que aceite ser calibrado e emitir os achados
+    sob contrato</em>. Por isso esse espaço estava vazio quando olhei: quem vende uma régua não tem
+    incentivo para construir o mecanismo que pode reprovar a própria régua.</p>
+  </section>
+
+  <!-- 3 -->
+  <section id="planos">
+    <span class="num">03</span>
+    <h2 class="head">Os dois planos e a regra que não se quebra</h2>
+    <p>O CAA separa um <strong>plano de produção</strong> — o que produz código e decisões, seja um
+    pipeline de IA, uma fábrica de software ou um time humano — de um <strong>plano de
+    assurance</strong> <span class="gloss">assurance = garantia / asseguração independente</span>,
+    que consome alegações e evidências e emite confiança auditável. Entre eles, um
+    <strong>contrato de veredito</strong> estruturado.</p>
+    <div class="card key">
+      <span class="tag">A regra de ouro</span>
+      <p><strong>Quem assegura não pode ser quem produz.</strong> Os revisores e portões internos de
+      um pipeline de produção fazem parte da <em>produção</em> — o CAA audita eles também. É a mesma
+      lógica de controles internos versus auditoria independente num banco: o primeiro não elimina a
+      necessidade do segundo, e o regulador exige os dois.</p>
+    </div>
+    <p>Guarde essa regra. No fim da saga, o experimento vai ter provado, cinco vezes, por que ela é
+    a parede mestra de todo o desenho.</p>
+
+    <h3>O pipeline, em camadas</h3>
+    <figure>
+      <svg viewBox="0 0 720 360" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,sans-serif">
+        <rect width="720" height="360" fill="#ffffff"/>
+        <!-- production plane -->
+        <rect x="20" y="30" width="200" height="300" rx="10" fill="#f3f4f6" stroke="#cbd2db"/>
+        <text x="120" y="55" font-size="13" font-weight="700" fill="#5a6675" text-anchor="middle">PLANO DE PRODUÇÃO</text>
+        <text x="120" y="76" font-size="11" fill="#8b95a1" text-anchor="middle">produz código e decisões</text>
+        <rect x="40" y="95" width="160" height="48" rx="6" fill="#fff" stroke="#cbd2db"/>
+        <text x="120" y="124" font-size="12" fill="#1b2733" text-anchor="middle">pipeline / fábrica / time</text>
+        <!-- contract arrow -->
+        <path d="M220 180 L260 180" stroke="#2456c9" stroke-width="2.5" marker-end="url(#b)"/>
+        <text x="240" y="170" font-size="10" fill="#2456c9" text-anchor="middle">contrato</text>
+        <defs><marker id="b" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2456c9"/></marker></defs>
+        <!-- assurance plane -->
+        <rect x="270" y="30" width="430" height="300" rx="10" fill="#eef3fd" stroke="#b9ccf2"/>
+        <text x="485" y="55" font-size="13" font-weight="700" fill="#2456c9" text-anchor="middle">PLANO DE ASSURANCE (independente)</text>
+        <g font-size="11.5" fill="#1b2733">
+          <rect x="290" y="72" width="390" height="34" rx="6" fill="#fff" stroke="#b9ccf2"/>
+          <text x="300" y="93">L0 — Rastreabilidade: nenhum cenário sem origem</text>
+          <rect x="290" y="113" width="390" height="34" rx="6" fill="#fff" stroke="#b9ccf2"/>
+          <text x="300" y="134">Triagem por classe de risco (determinística, não-IA)</text>
+          <rect x="290" y="154" width="390" height="34" rx="6" fill="#fff" stroke="#b9ccf2"/>
+          <text x="300" y="175">L1 — Revisores sob contrato (só veredito estruturado)</text>
+          <rect x="290" y="195" width="390" height="34" rx="6" fill="#fff" stroke="#b9ccf2"/>
+          <text x="300" y="216">L2 — Árbitro + 4 portões → decisão GO / NO-GO</text>
+          <rect x="290" y="236" width="390" height="34" rx="6" fill="#fff" stroke="#b9ccf2"/>
+          <text x="300" y="257">L3 — Governança em runtime (mandato → intenção → auditoria)</text>
+          <rect x="290" y="277" width="390" height="40" rx="6" fill="#e9f6ee" stroke="#9ed4b3"/>
+          <text x="300" y="295" font-weight="700" fill="#157a3d">L4 — Avaliação dos revisores (a metrologia)</text>
+          <text x="300" y="310" font-size="10.5" fill="#157a3d">mede recall + falso-positivo contra incidentes reais</text>
+        </g>
+      </svg>
+      <figcaption>L0–L4 = as camadas (Layers) do plano de assurance. A camada L4 é onde mora a calibração — e é ela que o experimento inteiro estressa.</figcaption>
+    </figure>
+  </section>
+
+  <!-- 4 -->
+  <section id="medir">
+    <span class="num">04</span>
+    <h2 class="head">Como a gente mede um revisor</h2>
+    <p>Um revisor é calibrado em <strong>dois números que precisam andar sempre juntos</strong>:</p>
+    <div class="card">
+      <p><strong>Recall</strong> <span class="gloss">recall = taxa de acerto / sensibilidade</span> —
+      das falhas reais, quantas o revisor pegou? Um revisor que perde riscos reais é inútil.</p>
+      <p style="margin-top:12px"><strong>Taxa de falso-positivo</strong>
+      <span class="gloss">FP = falso-positivo: alarme onde não havia perigo</span> — nos sistemas
+      saudáveis, quantas vezes o revisor gritou "fogo" sem fogo? Um revisor que marca tudo
+      <em>também</em> é inútil — só transfere o custo para o humano que tem que filtrar o ruído.</p>
+    </div>
+    <p><strong>O par é o ponto inteiro.</strong> Qualquer número sozinho é manipulável. Um revisor
+    que marca tudo tem recall perfeito — e é inútil. Um revisor que aprova tudo tem zero falso-positivo
+    — e é inútil. Só o <em>par</em> expõe os dois. Essa é a afirmação que o experimento tentou quebrar.</p>
+    <div class="card note">
+      <span class="tag">Youden</span>
+      <p>Para resumir os dois números num só, usamos o <strong>índice de Youden</strong>
+      <span class="gloss">Youden = recall − falso-positivo; quanto maior, melhor o instrumento</span>.
+      Um revisor perfeito tem Youden 1,0; um que marca tudo ou aprova tudo tende a 0.</p>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section id="corpus">
+    <span class="num">05</span>
+    <h2 class="head">Contra o que medimos — o corpus</h2>
+    <p>Não dava para calibrar contra opiniões, então calibrei contra a realidade: <strong>postmortems
+    públicos</strong> <span class="gloss">postmortem = relatório público de análise de um incidente real</span>
+    de falhas reais da AWS, GitHub, Cloudflare, CircleCI, Mozilla, Twilio, Val Town e outros. Para
+    cada incidente, escrevi um <strong>par casado</strong>:</p>
+    <figure>
+      <svg viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,sans-serif">
+        <rect width="720" height="220" fill="#ffffff"/>
+        <text x="360" y="28" font-size="13" font-weight="700" fill="#16367e" text-anchor="middle">Um incidente real → um par casado</text>
+        <rect x="280" y="44" width="160" height="40" rx="8" fill="#f3f4f6" stroke="#cbd2db"/>
+        <text x="360" y="69" font-size="12" fill="#1b2733" text-anchor="middle">postmortem público</text>
+        <path d="M330 84 L250 116" stroke="#8b95a1" stroke-width="1.6" marker-end="url(#c)"/>
+        <path d="M390 84 L470 116" stroke="#8b95a1" stroke-width="1.6" marker-end="url(#c)"/>
+        <defs><marker id="c" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8b95a1"/></marker></defs>
+        <rect x="90" y="120" width="280" height="80" rx="8" fill="#fbedeb" stroke="#e0b3ac"/>
+        <text x="230" y="143" font-size="12.5" font-weight="700" fill="#b23a2e" text-anchor="middle">CASO DE FALHA</text>
+        <text x="230" y="164" font-size="11" fill="#7a4039" text-anchor="middle">a arquitetura pré-incidente,</text>
+        <text x="230" y="180" font-size="11" fill="#7a4039" text-anchor="middle">com a causa presente mas não nomeada</text>
+        <rect x="390" y="120" width="280" height="80" rx="8" fill="#e9f6ee" stroke="#9ed4b3"/>
+        <text x="530" y="143" font-size="12.5" font-weight="700" fill="#157a3d" text-anchor="middle">GÊMEO SAUDÁVEL</text>
+        <text x="530" y="164" font-size="11" fill="#1c5a33" text-anchor="middle">a arquitetura idêntica,</text>
+        <text x="530" y="180" font-size="11" fill="#1c5a33" text-anchor="middle">com a mitigação no lugar</text>
+      </svg>
+      <figcaption>Como os gêmeos diferem só pela mitigação, qualquer diferença no veredito do revisor isola a capacidade dele de discriminar o risco — e nada mais.</figcaption>
+    </figure>
+    <p>Cada caso recebe uma de <strong>12 categorias de causa-raiz</strong> (uma taxonomia fixa de
+    modos de falha recorrentes — retentativa sem idempotência, timeout mal calibrado, esgotamento de
+    pool, deploy sem rollback seguro, e assim por diante). E cada caso tem um <strong>distrator</strong>:
+    uma causa plausível porém falsa, plantada de propósito. Um revisor que casa padrões superficiais
+    morde o distrator; um que raciocina sobre o mecanismo chega na causa verdadeira.</p>
+    <div class="card note">
+      <span class="tag">Blindagem</span>
+      <p>Um caso só serve se o revisor tiver que <em>raciocinar</em> para chegar à resposta, em vez
+      de lê-la na página. Por isso cada caso passou por um "teste do leitor cego": nenhuma frase pode
+      declarar a conclusão, e nenhum código de categoria pode aparecer no texto. Isso não saiu de
+      primeira — o corpus final é a terceira reescrita auditada; versões anteriores vazavam a resposta
+      e foram corrigidas.</p>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section id="saga">
+    <span class="num">06</span>
+    <h2 class="head">A saga: cinco tentativas de quebrar</h2>
+    <p>Esta é a parte que a maioria dos relatórios esconde. Eu coloco no centro, porque os becos sem
+    saída são o conteúdo mais valioso — cada um mostra como é fácil um processo de revisão por IA te
+    enganar, e o que foi preciso para pegar. Eu não tentei <em>confirmar</em> o CAA; tentei
+    <strong>falsificá-lo</strong> <span class="gloss">falsificar = tentar provar que está errado, no sentido científico</span>.</p>
+
+    <div class="run r1">
+      <div class="badge">1</div>
+      <div>
+        <h4>O controle que se recusou a ser ruim</h4>
+        <span class="verdict">veredito automático: "falsificado" — porém errado</span>
+        <p>Construí dois revisores reais e dois "degenerados" de propósito, incluindo um que deveria
+        aprovar demais. Instruído a ser relapso, o modelo <strong>se recusou a ser ruim</strong> e
+        pegou quase tudo mesmo assim. O portão automático declarou a hipótese "falsificada" — mas
+        isso estava errado: o controle apenas falhou em ficar degenerado, o que pelas regras é
+        <em>inconclusivo</em>, não falha. Lição: não dá para criar um revisor ruim só <em>mandando</em>
+        um modelo capaz ser ruim.</p>
+      </div>
+    </div>
+
+    <div class="run r2">
+      <div class="badge">2</div>
+      <div>
+        <h4>A corroboração que era verdadeira, mas larga demais</h4>
+        <span class="verdict">veredito automático: "corroborado" — porém amplo demais</span>
+        <p>Troquei o controle por um quebrado <em>estruturalmente</em>. Desta vez a métrica separou
+        bem os bons dos quebrados. Mas a leitura do dado bruto mostrou: toda a discriminação vinha de
+        um dos dois números (falso-positivo); o outro (recall) estava saturado e não fazia trabalho.
+        "A métrica funciona" exagerava o que o dado permitia. Lição: um veredito correto ainda pode
+        ser um exagero de escopo.</p>
+      </div>
+    </div>
+
+    <div class="run r3">
+      <div class="badge">3.0</div>
+      <div>
+        <h4>O controle que colapsou em outro controle</h4>
+        <span class="verdict">veredito automático: "inconclusivo" — defeito escondido</span>
+        <p>Adicionei o revisor que eu mais queria testar: um que <em>parece rigoroso mas atribui a
+        causa errada</em>. Especificado por instrução, ele colapsou em marcar <em>tudo</em> — idêntico
+        ao que eu já tinha. O portão passou por tecnicalidade; só a leitura dos achados caso a caso
+        pegou o colapso.</p>
+      </div>
+    </div>
+
+    <div class="run r4">
+      <div class="badge">3.1</div>
+      <div>
+        <h4>O resultado que nunca foi real</h4>
+        <span class="verdict">veredito automático: "corroborado" — sobre dados falsos</span>
+        <p>Rodei de novo. O portão disse "corroborado", com um número de recall lindo. Era
+        <strong>dado de simulação</strong> <span class="gloss">dry-run = execução de teste com dados
+        falsos, sem chamar o modelo real</span> — um valor fixo no mock, apresentado como execução
+        real. Não houve chamada nenhuma ao modelo. Peguei só ao notar que toda linha do log estava
+        marcada como simulação. Lição: o resultado mais perigoso é o que confirma o que você
+        esperava.</p>
+      </div>
+    </div>
+
+    <div class="run r5">
+      <div class="badge">3.1</div>
+      <div>
+        <h4>O veredito real — e o controle que ainda não dava para construir</h4>
+        <span class="verdict">veredito: inconclusivo, mas honesto</span>
+        <p>A execução real, finalmente limpa. O revisor sob contrato bateu o ingênuo com folga no
+        falso-positivo, <strong>replicando o resultado num segundo corpus independente</strong>. Mas
+        o recall saturou de novo (o modelo acha a causa por mais sutil que o texto seja), e o revisor
+        de atribuição-errada não pôde ser construído nem na terceira tentativa. Lição: o modo de
+        falha mais perigoso pode ser uma propriedade emergente do raciocínio ruim, não algo que se
+        fabrica.</p>
+      </div>
+    </div>
+
+    <table class="scores">
+      <caption>Os dois corpora reais, reconstruídos do dado bruto (recall / falso-positivo).</caption>
+      <thead><tr><th>Revisor</th><th>Corpus A</th><th>Corpus B</th><th>Papel</th></tr></thead>
+      <tbody>
+        <tr><td>R2 — sob contrato</td><td>1,00 / 0,05</td><td>1,00 / 0,10</td><td>revisor real</td></tr>
+        <tr><td>R1 — ingênuo</td><td>1,00 / 0,25</td><td>1,00 / 0,55</td><td>revisor real (base)</td></tr>
+        <tr><td>R3 — cego a categorias</td><td>0,35 / 0,00</td><td>0,30 / 0,05</td><td>degenerado</td></tr>
+        <tr><td>R4 — marca tudo</td><td>1,00 / 1,00</td><td>1,00 / 1,00</td><td>degenerado</td></tr>
+        <tr><td>R5 — atribuição errada</td><td>—</td><td>0,00 / 0,00</td><td>anulado</td></tr>
+      </tbody>
+    </table>
+    <p class="soft" style="font-size:15px">Leia pela <em>forma</em>: o R4 (marca tudo) só é pego pelo falso-positivo;
+    o R3 (cego) só é pego pelo recall. Dois degenerados pegos por <em>metades diferentes</em> do par —
+    é o mecanismo funcionando. E o recall em 1,00 para todo revisor real, nos dois corpora: a saturação
+    que vira a limitação declarada.</p>
+  </section>
+
+  <!-- 7 -->
+  <section id="meta">
+    <span class="num">07</span>
+    <h2 class="head">A descoberta que veio de lado</h2>
+    <p>Olhe de novo os cinco vereditos do portão automático: <span class="mono">falsificado,
+    corroborado, inconclusivo, corroborado, inconclusivo</span>. Em <strong>toda</strong> execução,
+    o portão aceitou um resultado defeituoso — e em toda execução, só a auditoria humana do dado bruto
+    pegou. O portão pegou o que foi construído para pegar e passou todo modo de falha novo.</p>
+
+    <figure>
+      <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,sans-serif">
+        <rect width="720" height="300" fill="#ffffff"/>
+        <text x="360" y="28" font-size="13" font-weight="700" fill="#16367e" text-anchor="middle">Por que o portão fechado não consegue se policiar</text>
+        <!-- gate -->
+        <rect x="60" y="60" width="240" height="170" rx="10" fill="#eef3fd" stroke="#2456c9"/>
+        <text x="180" y="84" font-size="12.5" font-weight="700" fill="#2456c9" text-anchor="middle">PORTÃO AUTOMÁTICO</text>
+        <text x="180" y="102" font-size="10.5" fill="#5a6675" text-anchor="middle">regras fechadas: só checa o previsto</text>
+        <circle cx="120" cy="150" r="16" fill="#fff" stroke="#2456c9"/><text x="120" y="155" font-size="11" fill="#2456c9" text-anchor="middle">c1</text>
+        <circle cx="170" cy="150" r="16" fill="#fff" stroke="#2456c9"/><text x="170" y="155" font-size="11" fill="#2456c9" text-anchor="middle">c2</text>
+        <circle cx="220" cy="150" r="16" fill="#fff" stroke="#2456c9"/><text x="220" y="155" font-size="11" fill="#2456c9" text-anchor="middle">c3</text>
+        <rect x="244" y="135" width="30" height="30" rx="3" fill="#f2d6d2" stroke="#b23a2e" stroke-dasharray="3 2"/>
+        <text x="259" y="185" font-size="10" fill="#b23a2e" text-anchor="middle">falta</text>
+        <text x="180" y="212" font-size="10.5" fill="#b23a2e" text-anchor="middle">defeito novo → não há regra → passa</text>
+        <!-- accept -->
+        <path d="M300 150 L360 150" stroke="#b23a2e" stroke-width="2" marker-end="url(#d)"/>
+        <defs><marker id="d" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#b23a2e"/></marker></defs>
+        <rect x="362" y="128" width="120" height="44" rx="8" fill="#fbedeb" stroke="#b23a2e"/>
+        <text x="422" y="148" font-size="12" font-weight="700" fill="#b23a2e" text-anchor="middle">ACEITA</text>
+        <text x="422" y="163" font-size="9.5" fill="#7a4039" text-anchor="middle">defeito passa batido</text>
+        <!-- auditor -->
+        <rect x="362" y="200" width="300" height="80" rx="10" fill="#e9f6ee" stroke="#157a3d"/>
+        <text x="512" y="224" font-size="12.5" font-weight="700" fill="#157a3d" text-anchor="middle">AUDITOR HUMANO INDEPENDENTE</text>
+        <text x="512" y="244" font-size="10.5" fill="#1c5a33" text-anchor="middle">avalia com modelo ABERTO: "isso faz sentido?"</text>
+        <text x="512" y="262" font-size="10.5" fill="#1c5a33" text-anchor="middle">reconhece o defeito que ninguém previu → PEGA</text>
+        <path d="M259 165 C259 250, 330 250, 360 245" stroke="#b23a2e" stroke-width="1.4" stroke-dasharray="5 4" fill="none" marker-end="url(#d)"/>
+      </svg>
+      <figcaption>O portão só checa o que foi previsto (c1, c2, c3...). O defeito novo não tem regra — escapa. O auditor humano avalia com um modelo aberto ("isso faz sentido?") e pega o que o portão não previu.</figcaption>
+    </figure>
+
+    <div class="card key">
+      <span class="tag">O argumento</span>
+      <p>Isso é <strong>estrutural</strong>, não um bug do meu portão. Um portão de regras fechadas só
+      consegue checar os modos de falha que o autor dele <em>antecipou</em>. Mas o motivo de rodar um
+      experimento é justamente que o resultado não é conhecido de antemão. O portão é completo só
+      contra o passado; o processo gera o futuro. Por isso, quanto mais novo e interessante o defeito,
+      mais garantido que ele escapa.</p>
+    </div>
+
+    <p>E aqui está a recursão que torna isso forte: o CAA diz que <strong>quem produz evidência não
+    pode ser quem a assegura</strong>. Este estudo, ao tentar validar outra coisa, gerou cinco
+    demonstrações independentes de exatamente esse princípio. A independência do auditor não é um
+    detalhe de implementação do CAA — neste estudo, foi a condição que pegou todo erro que importou.</p>
+  </section>
+
+  <!-- 8 -->
+  <section id="veredito">
+    <span class="num">08</span>
+    <h2 class="head">O veredito honesto</h2>
+    <div class="card win">
+      <span class="tag">✓ Demonstrado</span>
+      <p>A métrica pareada separa o revisor sob contrato do ingênuo, e ambos de dois degenerados —
+      pelo eixo de falso-positivo, replicado em dois corpora independentes com chamadas reais ao
+      modelo. O núcleo da ideia se sustenta.</p>
+    </div>
+    <div class="card note">
+      <span class="tag">✗ Não demonstrado (com motivo conhecido)</span>
+      <p>Discriminação no eixo de recall entre revisores plausíveis. O recall satura em casos
+      textuais, de forma reprodutível — é uma propriedade de como os modelos leem prosa, e eu reporto
+      como limitação em vez de esconder.</p>
+    </div>
+    <div class="card note">
+      <span class="tag">⊘ Não testado</span>
+      <p>Detecção do revisor de atribuição-errada — o modo mais perigoso — porque o controle resistiu
+      a três tentativas de construção. A dificuldade repetida <em>é</em> um achado.</p>
+    </div>
+    <div class="card fail">
+      <span class="tag">⚠ Refutado</span>
+      <p>Que um portão automático de regra fechada se basta sozinho. Ele falhou nas cinco execuções; só
+      a auditoria humana pegou cada defeito. Esse é o resultado mais forte, e chegou de lado.</p>
+    </div>
+    <p style="margin-top:24px"><strong>Então, funciona?</strong> Funciona onde pude testar, mapeia
+    com honestidade onde não funciona, e ao falhar em se policiar sozinho provou a própria premissa
+    central. Para um framework cuja proposta inteira é "não confie no revisor, verifique" — não há
+    resultado mais adequado.</p>
+    <div class="card key">
+      <span class="tag">É um piloto</span>
+      <p>n = 20 pares <span class="gloss">n = tamanho da amostra</span>, autor único, um modelo, casos
+      em português brasileiro. As conclusões são bem-fundamentadas <em>para um piloto</em>, não para
+      uma afirmação definitiva — e os documentos dizem isso em todo lugar. A força não está na robustez
+      estatística; está na honestidade do escopo e na descoberta recursiva, que não depende do tamanho
+      da amostra.</p>
+    </div>
+  </section>
+
+  <hr class="div">
+
+  <!-- glossary -->
+  <section id="glossario">
+    <span class="num">09</span>
+    <h2 class="head">Glossário — todas as siglas num lugar</h2>
+    <div class="card">
+      <p><strong>CAA</strong> — Continuous Architecture Assurance: o framework inteiro, o assunto deste documento.</p>
+      <p><strong>IA</strong> — Inteligência Artificial.</p>
+      <p><strong>metrologia</strong> — a ciência da medição e da calibração de instrumentos.</p>
+      <p><strong>oráculo</strong> — uma fonte que se acredita por autoridade, sem verificação (o oposto do que o CAA quer).</p>
+      <p><strong>assurance</strong> — garantia / asseguração independente da qualidade.</p>
+      <p><strong>recall</strong> — taxa de acerto: das falhas reais, quantas foram pegas.</p>
+      <p><strong>falso-positivo (FP)</strong> — alarme levantado onde não havia perigo real.</p>
+      <p><strong>Youden</strong> — índice resumo: recall menos falso-positivo (quanto maior, melhor).</p>
+      <p><strong>postmortem</strong> — relatório público de análise de um incidente real.</p>
+      <p><strong>par casado</strong> — caso de falha + gêmeo saudável, derivados do mesmo incidente.</p>
+      <p><strong>distrator</strong> — causa plausível mas falsa, plantada para testar raciocínio.</p>
+      <p><strong>taxonomia</strong> — o conjunto fixo de 12 categorias de causa-raiz.</p>
+      <p><strong>blindagem</strong> — remover do texto qualquer pista que entregue a resposta.</p>
+      <p><strong>falsificar</strong> — no sentido científico, tentar provar que uma hipótese está errada.</p>
+      <p><strong>dry-run</strong> — execução de teste com dados simulados, sem chamar o modelo real.</p>
+      <p><strong>degenerado</strong> — um revisor construído de propósito para falhar de um jeito conhecido.</p>
+      <p><strong>L0–L4</strong> — as camadas (Layers) do plano de assurance.</p>
+      <p><strong>R1–R5</strong> — os cinco revisores testados (ingênuo, sob contrato, cego, marca-tudo, atribuição-errada).</p>
+      <p><strong>n</strong> — tamanho da amostra (aqui, 20 pares por corpus).</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>Continuous Architecture Assurance</b> — versão didática do programa de pesquisa.
+    Para o detalhe completo: o technical report, os três papers (framework, empírico, meta) e o
+    datasheet do corpus acompanham o repositório. Todo número aqui foi reconstruído do dado bruto,
+    independentemente do harness do experimento.</p>
+    <p style="margin-top:14px">— Rudson Carvalho, Independent Researcher</p>
+  </div>
+</footer>
+
+</body>
+</html>
