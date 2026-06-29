@@ -5,7 +5,7 @@
 **Status:** Draft v0.1. CAA is a proposed assurance framework. Its reviewer-calibration metric has **pilot empirical support on controlled textual incident pairs**, with important limitations — demonstrated on the false-positive axis across two independent corpora with real model calls, undemonstrated on the recall axis, and untested for misattribution detection. The full five-run study, raw data, pre-registrations, and reconstruction-ready records are in [`/experiments`](./experiments); the honest scorecard is in [`docs/overview.md`](./docs/overview.md). Not yet submitted anywhere.
 
 **Author:** Rudson Carvalho · Independent research
-**License:** see [LICENSE](./LICENSE) (Apache-2.0 for code, CC BY 4.0 for docs/spec — adjust as you prefer)
+**License:** see [LICENSE](./LICENSE) (Apache-2.0 for code, CC BY 4.0 for docs and spec — adjust as you prefer)
 
 ---
 
@@ -81,29 +81,50 @@ The claim that the recall/false-positive pairing discriminates good reviewers fr
 ```
 .
 ├── README.md                         # this file
-├── docs/
-│   ├── papers/
-│   │   ├── position-paper.md         # CAA framework (genre: framework/position)
-│   │   ├── empirical-study.md        # calibration metric, pre-registered falsification (genre: empirical)
-│   │   └── meta-paper.md             # recursive gate-failure finding (genre: meta/reflective)
-│   ├── diagrams/
-│   │   ├── pipeline-v2.svg
-│   │   └── gate-vs-auditor.svg/png   # closed-predicate gate vs. open-model auditor
-│   ├── pipeline-v2-diagram.svg
-│   └── pipeline-v2-diagram.png
+├── .gitignore
+├── CITATION.cff
+├── LICENSE
 ├── archive/
-│   └── article-superseded.md         # original draft, superseded by papers/position-paper.md
-├── spec/
-│   └── verdict-contract.schema.json  # the pluggable interface (JSON Schema)
+│   └── article-superseded.md         # original draft, superseded by docs/papers/position-paper.md
+├── docs/
+│   ├── corpus-datasheet.md
+│   ├── overview.md
+│   ├── technical-report.md
+│   ├── pipeline-v2-diagram.png
+│   ├── pipeline-v2-diagram.svg
+│   ├── diagrams/
+│   │   ├── gate-vs-auditor.png
+│   │   ├── gate-vs-auditor.svg
+│   │   └── pipeline-v2.svg
+│   └── papers/
+│       ├── empirical-study.md        # calibration metric, pre-registered falsification (genre: empirical)
+│       ├── meta-paper.md             # recursive gate-failure finding (genre: meta/reflective)
+│       └── position-paper.md         # CAA framework (genre: framework/position)
 ├── experiments/                      # FULL DATA + CODE (reproducible)
 │   ├── README.md                     # what each file is, how to recompute
-│   ├── corpus-v2/  corpus-v3/        # the two 20-pair corpora (A and B)
-│   ├── results-v2/ results-v3-1/     # real runs (raw_results, run-log, scores, criteria)
-│   ├── results-v3-1-dryrun/          # the contaminated dry-run, kept on purpose
-│   ├── preregistration-v2/v3/v3-1.md # criteria fixed before each run
-│   └── calib_experiment*.py          # harness, evolved across iterations
-├── CITATION.cff
-└── LICENSE
+│   ├── calib_experiment.py
+│   ├── calib_experiment_v2.py
+│   ├── calib_experiment_v3.py
+│   ├── calib_experiment_v3_1.py
+│   ├── calibration-protocol-ptbr.md
+│   ├── corpus-v2/                    # Corpus A, 20 matched pairs
+│   ├── corpus-v3/                    # Corpus B, 20 matched pairs
+│   ├── iteration-3-1-investigation.md
+│   ├── preregistration-v2.md
+│   ├── preregistration-v3.md
+│   ├── preregistration-v3-1.md
+│   ├── r5-misattribution-manifest-v3-1.md
+│   ├── results-summary.md
+│   ├── results-summary-v3-1.md
+│   ├── results-v2/                   # real Corpus A run
+│   ├── results-v3/
+│   ├── results-v3-1/                 # real Corpus B run
+│   └── results-v3-1-dryrun/          # the contaminated dry-run, kept on purpose
+├── pdf/
+│   ├── CAA-one-pager.pdf
+│   └── CAA-technical-report.pdf
+└── spec/
+    └── verdict-contract.schema.json  # the pluggable interface (JSON Schema)
 ```
 
 ## The three papers
