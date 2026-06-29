@@ -13,6 +13,8 @@
 
 Everyone is building rulers to evaluate architecture — well-architected frameworks, maturity models, checklists, and now AI reviewers. **CAA is the machine that calibrates the rulers.**
 
+📖 Read the explainer: [English](https://rudsoncarvalho.github.io/continuous-architecture-assurance/) · [Português](https://rudsoncarvalho.github.io/continuous-architecture-assurance/index.pt.html)
+
 ## New here?
 
 Start by reading level. For the one-page executive summary and honest scorecard, see [`docs/overview.md`](./docs/overview.md). For the full narrative with embedded diagrams, see [`docs/technical-report.md`](./docs/technical-report.md) (also available as [`pdf/CAA-technical-report.pdf`](./pdf/CAA-technical-report.pdf)). For the rigor, see the three papers in [`docs/papers/`](./docs/papers/).
