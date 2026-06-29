@@ -139,6 +139,8 @@ The work splits into three contributions of distinct genres — kept as separate
 - **Empirical study** (`docs/papers/empirical-study.md`) — a pre-registered falsification of the paired recall/false-positive metric across two independent corpora with real model calls. Demonstrated: FP-axis discrimination of contracted vs. naive vs. two degenerate controls, replicated. Undemonstrated: recall-axis discrimination (recall saturates on textual cases, reproducibly). Untested: confident-misattribution detection (the control resisted three construction attempts).
 - **Meta-paper** (`docs/papers/meta-paper.md`) — across five iterations an automated decision gate accepted a structurally defective result every time, and only independent human audit of raw data caught each one. Argued to be structural (a closed-predicate gate is complete only against anticipated failure), not an instance bug — a recursive demonstration of CAA's own independence premise.
 
+![Closed-rule gate vs. open-model auditor](./docs/diagrams/gate-vs-auditor.png)
+
 **Status of all three: draft v0.1, target arXiv preprint. Not yet submitted; every numeric claim is reconstructed from raw per-call records independently of the experiment harness.**
 
 **Supporting the empirical study:** [`docs/corpus-datasheet.md`](./docs/corpus-datasheet.md) documents *what the reviewers were calibrated against* — the 12-category root-cause taxonomy, per-pair provenance tracing each case to a public incident (AWS, GitHub, Cloudflare, Twilio, Mozilla, Val Town, and others), the matched-pair construction method, the distractor design, and the anti-leak blinding protocol. Read this to understand the standard the reviewers were measured against.
